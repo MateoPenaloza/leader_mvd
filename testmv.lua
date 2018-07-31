@@ -1,10 +1,12 @@
+script_version("1.2.0")
+
 require "lib.moonloader"
 inicfg = require 'inicfg'
 local imgui = require 'imgui'
 local key = require 'vkeys'
-local encoding = require 'encoding' -- Р·Р°РіСЂСѓР¶Р°РµРј Р±РёР±Р»РёРѕС‚РµРєСѓ
-encoding.default = 'CP1251' -- СѓРєР°Р·С‹РІР°РµРј РєРѕРґРёСЂРѕРІРєСѓ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ, РѕРЅР° РґРѕР»Р¶РЅР° СЃРѕРІРїР°РґР°С‚СЊ СЃ РєРѕРґРёСЂРѕРІРєРѕР№ С„Р°Р№Р»Р°. CP1251 - СЌС‚Рѕ Windows-1251
-u8 = encoding.UTF8 -- Рё СЃРѕР·РґР°С‘Рј РєРѕСЂРѕС‚РєРёР№ РїСЃРµРІРґРѕРЅРёРј РґР»СЏ РєРѕРґРёСЂРѕРІС‰РёРєР° UTF-8
+local encoding = require 'encoding' -- Р В·Р В°Р С–РЎР‚РЎС“Р В¶Р В°Р ВµР С Р В±Р С‘Р В±Р В»Р С‘Р С•РЎвЂљР ВµР С”РЎС“
+encoding.default = 'CP1251' -- РЎС“Р С”Р В°Р В·РЎвЂ№Р Р†Р В°Р ВµР С Р С”Р С•Р Т‘Р С‘РЎР‚Р С•Р Р†Р С”РЎС“ Р С—Р С• РЎС“Р СР С•Р В»РЎвЂЎР В°Р Р…Р С‘РЎР‹, Р С•Р Р…Р В° Р Т‘Р С•Р В»Р В¶Р Р…Р В° РЎРѓР С•Р Р†Р С—Р В°Р Т‘Р В°РЎвЂљРЎРЉ РЎРѓ Р С”Р С•Р Т‘Р С‘РЎР‚Р С•Р Р†Р С”Р С•Р в„– РЎвЂћР В°Р в„–Р В»Р В°. CP1251 - РЎРЊРЎвЂљР С• Windows-1251
+u8 = encoding.UTF8 -- Р С‘ РЎРѓР С•Р В·Р Т‘Р В°РЎвЂР С Р С”Р С•РЎР‚Р С•РЎвЂљР С”Р С‘Р в„– Р С—РЎРѓР ВµР Р†Р Т‘Р С•Р Р…Р С‘Р С Р Т‘Р В»РЎРЏ Р С”Р С•Р Т‘Р С‘РЎР‚Р С•Р Р†РЎвЂ°Р С‘Р С”Р В° UTF-8
 
 
 
@@ -241,22 +243,22 @@ function imgui.OnDrawFrame()
 	imgui.SetNextWindowPos(imgui.ImVec2(sw / 2, sh / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(0.5, 0.5))
 	imgui.SetNextWindowSize(imgui.ImVec2(295, 200), imgui.Cond.FirstUseEver)
     imgui.Begin(u8'Leader-MVD | v. 1.2 beta', main_menu)
-	if imgui.Button(u8'Настройки',imgui.ImVec2(280, 20)) then
+	if imgui.Button(u8'РќР°СЃС‚СЂРѕР№РєРё',imgui.ImVec2(280, 20)) then
 		one_menu.v = not one_menu.v end
-	if imgui.Button(u8'Гос. новости',imgui.ImVec2(280, 20)) then
+	if imgui.Button(u8'Р“РѕСЃ. РЅРѕРІРѕСЃС‚Рё',imgui.ImVec2(280, 20)) then
 		second_menu.v = not second_menu.v end
-	if imgui.Button(u8'Проверка работы Департаментов',imgui.ImVec2(280, 20)) then
+	if imgui.Button(u8'РџСЂРѕРІРµСЂРєР° СЂР°Р±РѕС‚С‹ Р”РµРїР°СЂС‚Р°РјРµРЅС‚РѕРІ',imgui.ImVec2(280, 20)) then
 		tree_menu.v = not tree_menu.v end	
-	if imgui.Button(u8'Сообщить в рацию',imgui.ImVec2(280, 20)) then
+	if imgui.Button(u8'РЎРѕРѕР±С‰РёС‚СЊ РІ СЂР°С†РёСЋ',imgui.ImVec2(280, 20)) then
 		fo_menu.v = not fo_menu.v end
-	if imgui.Button(u8'Поставить лидера',imgui.ImVec2(280, 20)) then
+	if imgui.Button(u8'РџРѕСЃС‚Р°РІРёС‚СЊ Р»РёРґРµСЂР°',imgui.ImVec2(280, 20)) then
 		five_menu.v = not five_menu.v end
-	if imgui.Button(u8'Красная кнопка',imgui.ImVec2(280, 20)) then
+	if imgui.Button(u8'РљСЂР°СЃРЅР°СЏ РєРЅРѕРїРєР°',imgui.ImVec2(280, 20)) then
 		--six_menu.v = not six_menu.v end
 		printStringNow("It's not working", 2000)
-		sampAddChatMessage("[Leader-MVD] {FFFFFF} Временно не работает.", 0x4b58ebFF)
+		sampAddChatMessage("[Leader-MVD] {FFFFFF} Р’СЂРµРјРµРЅРЅРѕ РЅРµ СЂР°Р±РѕС‚Р°РµС‚.", 0x4b58ebFF)
 		end
-	if imgui.Button(u8'Лог обновления',imgui.ImVec2(280, 20)) then
+	if imgui.Button(u8'Р›РѕРі РѕР±РЅРѕРІР»РµРЅРёСЏ',imgui.ImVec2(280, 20)) then
 		seven_menu.v = not seven_menu.v end
 	imgui.End()
 	end
@@ -264,28 +266,28 @@ function imgui.OnDrawFrame()
    local sw, sh = getScreenResolution()
 	imgui.SetNextWindowPos(imgui.ImVec2(sw / 2, sh / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(0.5, -0.0))
 	imgui.SetNextWindowSize(imgui.ImVec2(852, 220), imgui.Cond.FirstUseEver)
-    imgui.Begin(u8'Информация | v. 1.2 beta', one_menu)
+    imgui.Begin(u8'РРЅС„РѕСЂРјР°С†РёСЏ | v. 1.2 beta', one_menu)
 		imgui.BeginChild('left pane', imgui.ImVec2(150, 0), true)
 		if not selected then selected = 1 end
-        if imgui.Selectable(u8('Настройки'), selected == 1) then selected = 1 end
-        if imgui.Selectable(u8('Команды'), selected == 2) then selected = 2 end
-        if imgui.Selectable(u8('Разработка'), selected == 3) then selected = 3 end
-        if imgui.Selectable(u8('Разработка'), selected == 4) then selected = 4 end
-        if imgui.Selectable(u8('Разработка'), selected == 5) then selected = 5 end
+        if imgui.Selectable(u8('РќР°СЃС‚СЂРѕР№РєРё'), selected == 1) then selected = 1 end
+        if imgui.Selectable(u8('РљРѕРјР°РЅРґС‹'), selected == 2) then selected = 2 end
+        if imgui.Selectable(u8('Р Р°Р·СЂР°Р±РѕС‚РєР°'), selected == 3) then selected = 3 end
+        if imgui.Selectable(u8('Р Р°Р·СЂР°Р±РѕС‚РєР°'), selected == 4) then selected = 4 end
+        if imgui.Selectable(u8('Р Р°Р·СЂР°Р±РѕС‚РєР°'), selected == 5) then selected = 5 end
         imgui.EndChild()
         imgui.SameLine()
         imgui.BeginGroup()
         if selected == 1 then 
 			imgui.Columns(3)
 			imgui.SetColumnWidth(-1, 280)
-				if imgui.Combo(u8'Стиль скрипта', style_set, {u8'Стиль 1',u8'Стиль 2'}) then 
-				if style_set.v == 'Стиль 1' then style = 0 end
-				if style_set.v == 'Стиль 2' then style = 1 end
-				if style_set.v == 'Стиль 3' then style = 2 end
+				if imgui.Combo(u8'РЎС‚РёР»СЊ СЃРєСЂРёРїС‚Р°', style_set, {u8'РЎС‚РёР»СЊ 1',u8'РЎС‚РёР»СЊ 2'}) then 
+				if style_set.v == 'РЎС‚РёР»СЊ 1' then style = 0 end
+				if style_set.v == 'РЎС‚РёР»СЊ 2' then style = 1 end
+				if style_set.v == 'РЎС‚РёР»СЊ 3' then style = 2 end
 				end
-				imgui.InputText(u8'Ник (без "_")', save_name,imgui.ImVec2(200, 30))
-				imgui.InputText(u8'Звание/Должность', save_dol,imgui.ImVec2(200, 30))
-				imgui.InputText(u8'Номер', save_phone,imgui.ImVec2(200, 30))
+				imgui.InputText(u8'РќРёРє (Р±РµР· "_")', save_name,imgui.ImVec2(200, 30))
+				imgui.InputText(u8'Р—РІР°РЅРёРµ/Р”РѕР»Р¶РЅРѕСЃС‚СЊ', save_dol,imgui.ImVec2(200, 30))
+				imgui.InputText(u8'РќРѕРјРµСЂ', save_phone,imgui.ImVec2(200, 30))
 				imgui.NextColumn()
 			if save_rpw.v == true then rpw = 1 else rpw = 0 end
 			if save_su.v == true then su = 1 else su = 0 end
@@ -301,24 +303,24 @@ function imgui.OnDrawFrame()
 			if save_cuff.v == true then cuff = 1 else cuff = 0 end
 			if save_ticket.v == true then ticket = 1 else ticket = 0 end
 			if save_takelic.v == true then takelic = 1 else takelic = 0 end
-			imgui.Checkbox(u8"Включить RP отыгровку оружия", save_rpw)
-			imgui.Checkbox(u8"РП отыгровка /su", save_su)
-			imgui.Checkbox(u8"РП отыгровка /putpl", save_putpl)
-			imgui.Checkbox(u8"РП отыгровка /eject", save_eject)
-			imgui.Checkbox(u8"РП отыгровка /arrest", save_arrest)
-			imgui.Checkbox(u8"РП отыгровка /hold", save_hold)
-			imgui.Checkbox(u8"РП отыгровка /takelic", save_takelic)
+			imgui.Checkbox(u8"Р’РєР»СЋС‡РёС‚СЊ RP РѕС‚С‹РіСЂРѕРІРєСѓ РѕСЂСѓР¶РёСЏ", save_rpw)
+			imgui.Checkbox(u8"Р Рџ РѕС‚С‹РіСЂРѕРІРєР° /su", save_su)
+			imgui.Checkbox(u8"Р Рџ РѕС‚С‹РіСЂРѕРІРєР° /putpl", save_putpl)
+			imgui.Checkbox(u8"Р Рџ РѕС‚С‹РіСЂРѕРІРєР° /eject", save_eject)
+			imgui.Checkbox(u8"Р Рџ РѕС‚С‹РіСЂРѕРІРєР° /arrest", save_arrest)
+			imgui.Checkbox(u8"Р Рџ РѕС‚С‹РіСЂРѕРІРєР° /hold", save_hold)
+			imgui.Checkbox(u8"Р Рџ РѕС‚С‹РіСЂРѕРІРєР° /takelic", save_takelic)
 			imgui.NextColumn()
 			imgui.SetColumnWidth(-1, 280)
-			imgui.Checkbox(u8"РП отыгровка /invite", save_invite)
-			imgui.Checkbox(u8"РП отыгровка /uninvite", save_uninvite)
-			imgui.Checkbox(u8"РП отыгровка /rang", save_rang)
-			imgui.Checkbox(u8"РП отыгровка /changeskin", save_changeskin)
-			imgui.Checkbox(u8"РП отыгровка /search", save_search)
-			imgui.Checkbox(u8"РП отыгровка /cuff", save_cuff)
-			imgui.Checkbox(u8"РП отыгровка /ticket", save_ticket)
+			imgui.Checkbox(u8"Р Рџ РѕС‚С‹РіСЂРѕРІРєР° /invite", save_invite)
+			imgui.Checkbox(u8"Р Рџ РѕС‚С‹РіСЂРѕРІРєР° /uninvite", save_uninvite)
+			imgui.Checkbox(u8"Р Рџ РѕС‚С‹РіСЂРѕРІРєР° /rang", save_rang)
+			imgui.Checkbox(u8"Р Рџ РѕС‚С‹РіСЂРѕРІРєР° /changeskin", save_changeskin)
+			imgui.Checkbox(u8"Р Рџ РѕС‚С‹РіСЂРѕРІРєР° /search", save_search)
+			imgui.Checkbox(u8"Р Рџ РѕС‚С‹РіСЂРѕРІРєР° /cuff", save_cuff)
+			imgui.Checkbox(u8"Р Рџ РѕС‚С‹РіСЂРѕРІРєР° /ticket", save_ticket)
 			imgui.Columns(1)
-			if imgui.Button(u8'Сохранить',imgui.ImVec2(685, 20)) then
+			if imgui.Button(u8'РЎРѕС…СЂР°РЅРёС‚СЊ',imgui.ImVec2(685, 20)) then
 				mainIni.settings.phone = save_phone.v
 				mainIni.settings.name = save_name.v
 				mainIni.settings.dol = save_dol.v
@@ -356,25 +358,25 @@ function imgui.OnDrawFrame()
 			imgui.Text(u8'/invite')
 			imgui.NextColumn()
 			imgui.SetColumnWidth(-1, 250)
-			imgui.Text(u8'- ООС чат в /r рацию')
-			imgui.Text(u8'- ООС чат в /f рацию')
-			imgui.Text(u8'- надеть наручники')
-			imgui.Text(u8'- посадить в КПЗ')
-			imgui.Text(u8'- посадить в патрульное авто')
-			imgui.Text(u8'- вытащить из машины')
-			imgui.Text(u8'- объявить в розыск')
-			imgui.Text(u8'- изъять водительское удостоверение')
-			imgui.Text(u8'- выписать штраф')
-			imgui.Text(u8'- принять человека в организацию')
+			imgui.Text(u8'- РћРћРЎ С‡Р°С‚ РІ /r СЂР°С†РёСЋ')
+			imgui.Text(u8'- РћРћРЎ С‡Р°С‚ РІ /f СЂР°С†РёСЋ')
+			imgui.Text(u8'- РЅР°РґРµС‚СЊ РЅР°СЂСѓС‡РЅРёРєРё')
+			imgui.Text(u8'- РїРѕСЃР°РґРёС‚СЊ РІ РљРџР—')
+			imgui.Text(u8'- РїРѕСЃР°РґРёС‚СЊ РІ РїР°С‚СЂСѓР»СЊРЅРѕРµ Р°РІС‚Рѕ')
+			imgui.Text(u8'- РІС‹С‚Р°С‰РёС‚СЊ РёР· РјР°С€РёРЅС‹')
+			imgui.Text(u8'- РѕР±СЉСЏРІРёС‚СЊ РІ СЂРѕР·С‹СЃРє')
+			imgui.Text(u8'- РёР·СЉСЏС‚СЊ РІРѕРґРёС‚РµР»СЊСЃРєРѕРµ СѓРґРѕСЃС‚РѕРІРµСЂРµРЅРёРµ')
+			imgui.Text(u8'- РІС‹РїРёСЃР°С‚СЊ С€С‚СЂР°С„')
+			imgui.Text(u8'- РїСЂРёРЅСЏС‚СЊ С‡РµР»РѕРІРµРєР° РІ РѕСЂРіР°РЅРёР·Р°С†РёСЋ')
 			imgui.NextColumn()
 			imgui.SetColumnWidth(-1, 100)
 			imgui.Text(u8'/uninvite')
-			imgui.Text(u8'/уд')
-			imgui.Text(u8'/епк')
+			imgui.Text(u8'/СѓРґ')
+			imgui.Text(u8'/РµРїРє')
 			imgui.NextColumn()
-			imgui.Text(u8'- уволить сотрудника')
-			imgui.Text(u8'- показать удостоверение')
-			imgui.Text(u8'- посмотреть ЕПК')
+			imgui.Text(u8'- СѓРІРѕР»РёС‚СЊ СЃРѕС‚СЂСѓРґРЅРёРєР°')
+			imgui.Text(u8'- РїРѕРєР°Р·Р°С‚СЊ СѓРґРѕСЃС‚РѕРІРµСЂРµРЅРёРµ')
+			imgui.Text(u8'- РїРѕСЃРјРѕС‚СЂРµС‚СЊ Р•РџРљ')
 		end
         imgui.EndGroup()
 		imgui.End()
@@ -383,14 +385,14 @@ function imgui.OnDrawFrame()
 	local sw, sh = getScreenResolution()
 	imgui.SetNextWindowPos(imgui.ImVec2(sw / 2, sh / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(0.0, 0.0))
 	imgui.SetNextWindowSize(imgui.ImVec2(300, 130), imgui.Cond.FirstUseEver)
-    imgui.Begin(u8'Гос. новости | v. 1.2 beta', second_menu)
-		if imgui.Button(u8'Для министра',imgui.ImVec2(280, 20)) then
+    imgui.Begin(u8'Р“РѕСЃ. РЅРѕРІРѕСЃС‚Рё | v. 1.2 beta', second_menu)
+		if imgui.Button(u8'Р”Р»СЏ РјРёРЅРёСЃС‚СЂР°',imgui.ImVec2(280, 20)) then
 		 second_menu_1.v = not second_menu_1.v end
-		 if imgui.Button(u8'Для ЛСПД',imgui.ImVec2(280, 20)) then
+		 if imgui.Button(u8'Р”Р»СЏ Р›РЎРџР”',imgui.ImVec2(280, 20)) then
 		  second_menu_2.v = not second_menu_2.v end
-		if imgui.Button(u8'Для СФПД',imgui.ImVec2(280, 20)) then
+		if imgui.Button(u8'Р”Р»СЏ РЎР¤РџР”',imgui.ImVec2(280, 20)) then
 		 second_menu_3.v = not second_menu_3.v end
-		if imgui.Button(u8'Для ЛВПД',imgui.ImVec2(280, 20)) then
+		if imgui.Button(u8'Р”Р»СЏ Р›Р’РџР”',imgui.ImVec2(280, 20)) then
 		 second_menu_4.v = not second_menu_4.v end
 	imgui.End()
 	end
@@ -398,124 +400,124 @@ function imgui.OnDrawFrame()
 			local sw, sh = getScreenResolution()
 			imgui.SetNextWindowPos(imgui.ImVec2(sw / 2, sh / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(0.0, 0.0))
 			imgui.SetNextWindowSize(imgui.ImVec2(300, 140), imgui.Cond.FirstUseEver)
-			imgui.Begin(u8'Гос. новости | MVD | v. 1.2 beta', second_menu_1)
-				if imgui.Button(u8'Набор в PA (3)',imgui.ImVec2(260, 20)) then
-					sampSendChat('/gnews Уважаемые жители Штата! Минуточку внимания.')
-					sampSendChat('/gnews Police Academy всех городов проводит набор.')
-					sampSendChat('/gnews Каждый из вас может попробовать себя в роли офицера.')
+			imgui.Begin(u8'Р“РѕСЃ. РЅРѕРІРѕСЃС‚Рё | MVD | v. 1.2 beta', second_menu_1)
+				if imgui.Button(u8'РќР°Р±РѕСЂ РІ PA (3)',imgui.ImVec2(260, 20)) then
+					sampSendChat('/gnews РЈРІР°Р¶Р°РµРјС‹Рµ Р¶РёС‚РµР»Рё РЁС‚Р°С‚Р°! РњРёРЅСѓС‚РѕС‡РєСѓ РІРЅРёРјР°РЅРёСЏ.')
+					sampSendChat('/gnews Police Academy РІСЃРµС… РіРѕСЂРѕРґРѕРІ РїСЂРѕРІРѕРґРёС‚ РЅР°Р±РѕСЂ.')
+					sampSendChat('/gnews РљР°Р¶РґС‹Р№ РёР· РІР°СЃ РјРѕР¶РµС‚ РїРѕРїСЂРѕР±РѕРІР°С‚СЊ СЃРµР±СЏ РІ СЂРѕР»Рё РѕС„РёС†РµСЂР°.')
 				end
 				imgui.SameLine(nil, 5)
-				imgui.TextQuestion(u8'Уважаемые жители Штата! Минуточку внимания.\nPolice Academy всех городов проводит набор.\nКаждый из вас может попробовать себя в роли офицера.')
-				if imgui.Button(u8'Восстановление по /wbook (1)',imgui.ImVec2(260, 20)) then
-					sampSendChat('/gnews Открыты заявления на восстановление в МВД по трудовой книге.')
+				imgui.TextQuestion(u8'РЈРІР°Р¶Р°РµРјС‹Рµ Р¶РёС‚РµР»Рё РЁС‚Р°С‚Р°! РњРёРЅСѓС‚РѕС‡РєСѓ РІРЅРёРјР°РЅРёСЏ.\nPolice Academy РІСЃРµС… РіРѕСЂРѕРґРѕРІ РїСЂРѕРІРѕРґРёС‚ РЅР°Р±РѕСЂ.\nРљР°Р¶РґС‹Р№ РёР· РІР°СЃ РјРѕР¶РµС‚ РїРѕРїСЂРѕР±РѕРІР°С‚СЊ СЃРµР±СЏ РІ СЂРѕР»Рё РѕС„РёС†РµСЂР°.')
+				if imgui.Button(u8'Р’РѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РїРѕ /wbook (1)',imgui.ImVec2(260, 20)) then
+					sampSendChat('/gnews РћС‚РєСЂС‹С‚С‹ Р·Р°СЏРІР»РµРЅРёСЏ РЅР° РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РІ РњР’Р” РїРѕ С‚СЂСѓРґРѕРІРѕР№ РєРЅРёРіРµ.')
 				end
 				imgui.SameLine(nil, 5)
-				imgui.TextQuestion(u8'Открыты заявления на восстановление в МВД по трудовой книге.')
-				if imgui.Button(u8'Агитационное сообщение(1)',imgui.ImVec2(260, 20)) then
-					sampSendChat('/gnews Вас ограбили? Вам угрожают? Увидели драку? Звоните в 02!')
+				imgui.TextQuestion(u8'РћС‚РєСЂС‹С‚С‹ Р·Р°СЏРІР»РµРЅРёСЏ РЅР° РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РІ РњР’Р” РїРѕ С‚СЂСѓРґРѕРІРѕР№ РєРЅРёРіРµ.')
+				if imgui.Button(u8'РђРіРёС‚Р°С†РёРѕРЅРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ(1)',imgui.ImVec2(260, 20)) then
+					sampSendChat('/gnews Р’Р°СЃ РѕРіСЂР°Р±РёР»Рё? Р’Р°Рј СѓРіСЂРѕР¶Р°СЋС‚? РЈРІРёРґРµР»Рё РґСЂР°РєСѓ? Р—РІРѕРЅРёС‚Рµ РІ 02!')
 				end
 				imgui.SameLine(nil, 5)
-				imgui.TextQuestion(u8'Вас ограбили? Вам угрожают? Увидели драку? Звоните в 02!')
-				if imgui.Button(u8'Агитационное сообщение(3)',imgui.ImVec2(260, 20)) then
-					sampSendChat('/gnews Уважаемые жители Штата! Минуточку внимания.')
-					sampSendChat('/gnews Вас ограбили? Вам угрожают? Увидели драку? Звоните в 02!')
-					sampSendChat('/gnews Полиция Белого Штата поможет Вам!')
+				imgui.TextQuestion(u8'Р’Р°СЃ РѕРіСЂР°Р±РёР»Рё? Р’Р°Рј СѓРіСЂРѕР¶Р°СЋС‚? РЈРІРёРґРµР»Рё РґСЂР°РєСѓ? Р—РІРѕРЅРёС‚Рµ РІ 02!')
+				if imgui.Button(u8'РђРіРёС‚Р°С†РёРѕРЅРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ(3)',imgui.ImVec2(260, 20)) then
+					sampSendChat('/gnews РЈРІР°Р¶Р°РµРјС‹Рµ Р¶РёС‚РµР»Рё РЁС‚Р°С‚Р°! РњРёРЅСѓС‚РѕС‡РєСѓ РІРЅРёРјР°РЅРёСЏ.')
+					sampSendChat('/gnews Р’Р°СЃ РѕРіСЂР°Р±РёР»Рё? Р’Р°Рј СѓРіСЂРѕР¶Р°СЋС‚? РЈРІРёРґРµР»Рё РґСЂР°РєСѓ? Р—РІРѕРЅРёС‚Рµ РІ 02!')
+					sampSendChat('/gnews РџРѕР»РёС†РёСЏ Р‘РµР»РѕРіРѕ РЁС‚Р°С‚Р° РїРѕРјРѕР¶РµС‚ Р’Р°Рј!')
 				end
 				imgui.SameLine(nil, 5)
-				imgui.TextQuestion(u8'Уважаемые жители Штата! Минуточку внимания.\nВас ограбили? Вам угрожают? Увидели драку? Звоните в 02!\nПолиция Белого Штата поможет Вам!')
+				imgui.TextQuestion(u8'РЈРІР°Р¶Р°РµРјС‹Рµ Р¶РёС‚РµР»Рё РЁС‚Р°С‚Р°! РњРёРЅСѓС‚РѕС‡РєСѓ РІРЅРёРјР°РЅРёСЏ.\nР’Р°СЃ РѕРіСЂР°Р±РёР»Рё? Р’Р°Рј СѓРіСЂРѕР¶Р°СЋС‚? РЈРІРёРґРµР»Рё РґСЂР°РєСѓ? Р—РІРѕРЅРёС‚Рµ РІ 02!\nРџРѕР»РёС†РёСЏ Р‘РµР»РѕРіРѕ РЁС‚Р°С‚Р° РїРѕРјРѕР¶РµС‚ Р’Р°Рј!')
 				local time = os.date('%H:%M:%S')
-				imgui.Text(u8'                           Время:'..time)
+				imgui.Text(u8'                           Р’СЂРµРјСЏ:'..time)
 			imgui.End()
 			end
 			if second_menu_2.v then
 			local sw, sh = getScreenResolution()
 			imgui.SetNextWindowPos(imgui.ImVec2(sw / 2, sh / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(0.0, 0.0))
 			imgui.SetNextWindowSize(imgui.ImVec2(300, 90), imgui.Cond.FirstUseEver)
-			imgui.Begin(u8'Гос. новости | LSPD | v. 1.2 beta', second_menu_2)
-				if imgui.Button(u8'Собеседование(3)',imgui.ImVec2(260, 20)) then
-					sampSendChat('/gnews Уважаемые жители Штата! Минуточку внимания.')
-					sampSendChat('/gnews Проходит набор курсантов в Los-Santos Police Academy.')
-					sampSendChat('/gnews Критерии: 4 года в Штате, лицензии, законопослушность')
+			imgui.Begin(u8'Р“РѕСЃ. РЅРѕРІРѕСЃС‚Рё | LSPD | v. 1.2 beta', second_menu_2)
+				if imgui.Button(u8'РЎРѕР±РµСЃРµРґРѕРІР°РЅРёРµ(3)',imgui.ImVec2(260, 20)) then
+					sampSendChat('/gnews РЈРІР°Р¶Р°РµРјС‹Рµ Р¶РёС‚РµР»Рё РЁС‚Р°С‚Р°! РњРёРЅСѓС‚РѕС‡РєСѓ РІРЅРёРјР°РЅРёСЏ.')
+					sampSendChat('/gnews РџСЂРѕС…РѕРґРёС‚ РЅР°Р±РѕСЂ РєСѓСЂСЃР°РЅС‚РѕРІ РІ Los-Santos Police Academy.')
+					sampSendChat('/gnews РљСЂРёС‚РµСЂРёРё: 4 РіРѕРґР° РІ РЁС‚Р°С‚Рµ, Р»РёС†РµРЅР·РёРё, Р·Р°РєРѕРЅРѕРїРѕСЃР»СѓС€РЅРѕСЃС‚СЊ')
 				end
 				imgui.SameLine(nil, 5)
-				imgui.TextQuestion(u8'Уважаемые жители Штата! Минуточку внимания.\nПроходит набор курсантов в Los-Santos Police Academy.\n Критерии: 4 года в Штате, лицензии, законопослушность')
-				if imgui.Button(u8'Напоминание о собеседовании(1)',imgui.ImVec2(260, 20)) then
-					sampSendChat('/gnews Напоминаю, проходит набор курсантов в Los-Santos Police Academy.')
+				imgui.TextQuestion(u8'РЈРІР°Р¶Р°РµРјС‹Рµ Р¶РёС‚РµР»Рё РЁС‚Р°С‚Р°! РњРёРЅСѓС‚РѕС‡РєСѓ РІРЅРёРјР°РЅРёСЏ.\nРџСЂРѕС…РѕРґРёС‚ РЅР°Р±РѕСЂ РєСѓСЂСЃР°РЅС‚РѕРІ РІ Los-Santos Police Academy.\n РљСЂРёС‚РµСЂРёРё: 4 РіРѕРґР° РІ РЁС‚Р°С‚Рµ, Р»РёС†РµРЅР·РёРё, Р·Р°РєРѕРЅРѕРїРѕСЃР»СѓС€РЅРѕСЃС‚СЊ')
+				if imgui.Button(u8'РќР°РїРѕРјРёРЅР°РЅРёРµ Рѕ СЃРѕР±РµСЃРµРґРѕРІР°РЅРёРё(1)',imgui.ImVec2(260, 20)) then
+					sampSendChat('/gnews РќР°РїРѕРјРёРЅР°СЋ, РїСЂРѕС…РѕРґРёС‚ РЅР°Р±РѕСЂ РєСѓСЂСЃР°РЅС‚РѕРІ РІ Los-Santos Police Academy.')
 				end
 				imgui.SameLine(nil, 5)
-				imgui.TextQuestion(u8'Напоминаю, проходит набор курсантов в Los-Santos Police Academy.')
+				imgui.TextQuestion(u8'РќР°РїРѕРјРёРЅР°СЋ, РїСЂРѕС…РѕРґРёС‚ РЅР°Р±РѕСЂ РєСѓСЂСЃР°РЅС‚РѕРІ РІ Los-Santos Police Academy.')
 				local time = os.date('%H:%M:%S')
-				imgui.Text(u8'                           Время:'..time)
+				imgui.Text(u8'                           Р’СЂРµРјСЏ:'..time)
 			imgui.End()
 			end
 			if second_menu_3.v then
 			local sw, sh = getScreenResolution()
 			imgui.SetNextWindowPos(imgui.ImVec2(sw / 2, sh / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(0.0, 0.0))
 			imgui.SetNextWindowSize(imgui.ImVec2(300, 90), imgui.Cond.FirstUseEver)
-			imgui.Begin(u8'Гос. новости | SFPD | v. 1.2 beta', second_menu_3)
-				if imgui.Button(u8'Собеседование(3)',imgui.ImVec2(260, 20)) then
-					sampSendChat('/gnews Уважаемые жители Штата! Минуточку внимания.')
-					sampSendChat('/gnews Проходит набор курсантов в San-Fierro Police Academy.')
-					sampSendChat('/gnews Критерии: 4 года в Штате, лицензии, законопослушность')
+			imgui.Begin(u8'Р“РѕСЃ. РЅРѕРІРѕСЃС‚Рё | SFPD | v. 1.2 beta', second_menu_3)
+				if imgui.Button(u8'РЎРѕР±РµСЃРµРґРѕРІР°РЅРёРµ(3)',imgui.ImVec2(260, 20)) then
+					sampSendChat('/gnews РЈРІР°Р¶Р°РµРјС‹Рµ Р¶РёС‚РµР»Рё РЁС‚Р°С‚Р°! РњРёРЅСѓС‚РѕС‡РєСѓ РІРЅРёРјР°РЅРёСЏ.')
+					sampSendChat('/gnews РџСЂРѕС…РѕРґРёС‚ РЅР°Р±РѕСЂ РєСѓСЂСЃР°РЅС‚РѕРІ РІ San-Fierro Police Academy.')
+					sampSendChat('/gnews РљСЂРёС‚РµСЂРёРё: 4 РіРѕРґР° РІ РЁС‚Р°С‚Рµ, Р»РёС†РµРЅР·РёРё, Р·Р°РєРѕРЅРѕРїРѕСЃР»СѓС€РЅРѕСЃС‚СЊ')
 				end
 				imgui.SameLine(nil, 5)
-				imgui.TextQuestion(u8'Уважаемые жители Штата! Минуточку внимания.\nПроходит набор курсантов в San-Fierro Police Academy.\n Критерии: 4 года в Штате, лицензии, законопослушность')
-				if imgui.Button(u8'Напоминание о собеседовании(1)',imgui.ImVec2(260, 20)) then
-					sampSendChat('/gnews Напоминаю, проходит набор курсантов в San-Fierro Police Academy.')
+				imgui.TextQuestion(u8'РЈРІР°Р¶Р°РµРјС‹Рµ Р¶РёС‚РµР»Рё РЁС‚Р°С‚Р°! РњРёРЅСѓС‚РѕС‡РєСѓ РІРЅРёРјР°РЅРёСЏ.\nРџСЂРѕС…РѕРґРёС‚ РЅР°Р±РѕСЂ РєСѓСЂСЃР°РЅС‚РѕРІ РІ San-Fierro Police Academy.\n РљСЂРёС‚РµСЂРёРё: 4 РіРѕРґР° РІ РЁС‚Р°С‚Рµ, Р»РёС†РµРЅР·РёРё, Р·Р°РєРѕРЅРѕРїРѕСЃР»СѓС€РЅРѕСЃС‚СЊ')
+				if imgui.Button(u8'РќР°РїРѕРјРёРЅР°РЅРёРµ Рѕ СЃРѕР±РµСЃРµРґРѕРІР°РЅРёРё(1)',imgui.ImVec2(260, 20)) then
+					sampSendChat('/gnews РќР°РїРѕРјРёРЅР°СЋ, РїСЂРѕС…РѕРґРёС‚ РЅР°Р±РѕСЂ РєСѓСЂСЃР°РЅС‚РѕРІ РІ San-Fierro Police Academy.')
 				end
 				imgui.SameLine(nil, 5)
-				imgui.TextQuestion(u8'Напоминаю, проходит набор курсантов в San-Fierro Police Academy.')
+				imgui.TextQuestion(u8'РќР°РїРѕРјРёРЅР°СЋ, РїСЂРѕС…РѕРґРёС‚ РЅР°Р±РѕСЂ РєСѓСЂСЃР°РЅС‚РѕРІ РІ San-Fierro Police Academy.')
 				local time = os.date('%H:%M:%S')
-				imgui.Text(u8'                           Время:'..time)
+				imgui.Text(u8'                           Р’СЂРµРјСЏ:'..time)
 			imgui.End()
 			end
 			if second_menu_4.v then
 			local sw, sh = getScreenResolution()
 			imgui.SetNextWindowPos(imgui.ImVec2(sw / 2, sh / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(0.0, 0.0))
 			imgui.SetNextWindowSize(imgui.ImVec2(300, 90), imgui.Cond.FirstUseEver)
-			imgui.Begin(u8'Гос. новости | LVPD | v. 1.2 beta', second_menu_4)
-				if imgui.Button(u8'Собеседование(3)',imgui.ImVec2(260, 20)) then
-					sampSendChat('/gnews Уважаемые жители Штата! Минуточку внимания.')
-					sampSendChat('/gnews Проходит набор курсантов в Las-Venturas Police Academy.')
-					sampSendChat('/gnews Критерии: 4 года в Штате, лицензии, законопослушность')
+			imgui.Begin(u8'Р“РѕСЃ. РЅРѕРІРѕСЃС‚Рё | LVPD | v. 1.2 beta', second_menu_4)
+				if imgui.Button(u8'РЎРѕР±РµСЃРµРґРѕРІР°РЅРёРµ(3)',imgui.ImVec2(260, 20)) then
+					sampSendChat('/gnews РЈРІР°Р¶Р°РµРјС‹Рµ Р¶РёС‚РµР»Рё РЁС‚Р°С‚Р°! РњРёРЅСѓС‚РѕС‡РєСѓ РІРЅРёРјР°РЅРёСЏ.')
+					sampSendChat('/gnews РџСЂРѕС…РѕРґРёС‚ РЅР°Р±РѕСЂ РєСѓСЂСЃР°РЅС‚РѕРІ РІ Las-Venturas Police Academy.')
+					sampSendChat('/gnews РљСЂРёС‚РµСЂРёРё: 4 РіРѕРґР° РІ РЁС‚Р°С‚Рµ, Р»РёС†РµРЅР·РёРё, Р·Р°РєРѕРЅРѕРїРѕСЃР»СѓС€РЅРѕСЃС‚СЊ')
 				end
 				imgui.SameLine(nil, 5)
-				imgui.TextQuestion(u8'Уважаемые жители Штата! Минуточку внимания.\nПроходит набор курсантов в Las-Venturas Police Academy.\n Критерии: 4 года в Штате, лицензии, законопослушность')
-				if imgui.Button(u8'Напоминание о собеседовании(1)',imgui.ImVec2(260, 20)) then
-					sampSendChat('/gnews Напоминаю, проходит набор курсантов в Las-Venturas Police Academy.')
+				imgui.TextQuestion(u8'РЈРІР°Р¶Р°РµРјС‹Рµ Р¶РёС‚РµР»Рё РЁС‚Р°С‚Р°! РњРёРЅСѓС‚РѕС‡РєСѓ РІРЅРёРјР°РЅРёСЏ.\nРџСЂРѕС…РѕРґРёС‚ РЅР°Р±РѕСЂ РєСѓСЂСЃР°РЅС‚РѕРІ РІ Las-Venturas Police Academy.\n РљСЂРёС‚РµСЂРёРё: 4 РіРѕРґР° РІ РЁС‚Р°С‚Рµ, Р»РёС†РµРЅР·РёРё, Р·Р°РєРѕРЅРѕРїРѕСЃР»СѓС€РЅРѕСЃС‚СЊ')
+				if imgui.Button(u8'РќР°РїРѕРјРёРЅР°РЅРёРµ Рѕ СЃРѕР±РµСЃРµРґРѕРІР°РЅРёРё(1)',imgui.ImVec2(260, 20)) then
+					sampSendChat('/gnews РќР°РїРѕРјРёРЅР°СЋ, РїСЂРѕС…РѕРґРёС‚ РЅР°Р±РѕСЂ РєСѓСЂСЃР°РЅС‚РѕРІ РІ Las-Venturas Police Academy.')
 				end
 				imgui.SameLine(nil, 5)
-				imgui.TextQuestion(u8'Напоминаю, проходит набор курсантов в Las-Venturas Police Academy.')
+				imgui.TextQuestion(u8'РќР°РїРѕРјРёРЅР°СЋ, РїСЂРѕС…РѕРґРёС‚ РЅР°Р±РѕСЂ РєСѓСЂСЃР°РЅС‚РѕРІ РІ Las-Venturas Police Academy.')
 				local time = os.date('%H:%M:%S')
-				imgui.Text(u8'                           Время:'..time)
+				imgui.Text(u8'                           Р’СЂРµРјСЏ:'..time)
 			imgui.End()
 			end
 	if tree_menu.v then
 	local sw, sh = getScreenResolution()
 	imgui.SetNextWindowPos(imgui.ImVec2(sw / 2, sh / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(0.0, 0.0))
 	imgui.SetNextWindowSize(imgui.ImVec2(500, 170), imgui.Cond.FirstUseEver)
-    imgui.Begin(u8'Проверка работы Департаментов | v. 1.2 beta', tree_menu)
+    imgui.Begin(u8'РџСЂРѕРІРµСЂРєР° СЂР°Р±РѕС‚С‹ Р”РµРїР°СЂС‚Р°РјРµРЅС‚РѕРІ | v. 1.2 beta', tree_menu)
 	imgui.BeginChild('left pane', imgui.ImVec2(180, 0), true)
 		if not selected then selected = 1 end
-        if imgui.Selectable(u8('Проверка постов городов   '), selected == 1) then selected = 1 end
-        if imgui.Selectable(u8('Проверка патруля в городах'), selected == 2) then selected = 2 end
+        if imgui.Selectable(u8('РџСЂРѕРІРµСЂРєР° РїРѕСЃС‚РѕРІ РіРѕСЂРѕРґРѕРІ   '), selected == 1) then selected = 1 end
+        if imgui.Selectable(u8('РџСЂРѕРІРµСЂРєР° РїР°С‚СЂСѓР»СЏ РІ РіРѕСЂРѕРґР°С…'), selected == 2) then selected = 2 end
 		imgui.EndChild()
         imgui.SameLine()
         imgui.BeginGroup()
 		if selected == 1 then
-			if imgui.Button(u8'Город Los-Santos',imgui.ImVec2(300, 20)) then
+			if imgui.Button(u8'Р“РѕСЂРѕРґ Los-Santos',imgui.ImVec2(300, 20)) then
 				tree_menu_1.v = not tree_menu_1.v end
-			if imgui.Button(u8'Город San-Fierro',imgui.ImVec2(300, 20)) then
+			if imgui.Button(u8'Р“РѕСЂРѕРґ San-Fierro',imgui.ImVec2(300, 20)) then
 				tree_menu_2.v = not tree_menu_2.v end
-			if imgui.Button(u8'Город Las-Venturas',imgui.ImVec2(300, 20)) then
+			if imgui.Button(u8'Р“РѕСЂРѕРґ Las-Venturas',imgui.ImVec2(300, 20)) then
 				tree_menu_3.v = not tree_menu_3.v end
-			if imgui.Button(u8'Итог проверки',imgui.ImVec2(148, 20)) then
-				sampSendChat(string.format("/f Итог проверки постов: Лос-Сантос: %d/3, Сан-Фиерро: %d/3, Лас-Вентурас: %d/3", posls, possf, poslv))
+			if imgui.Button(u8'РС‚РѕРі РїСЂРѕРІРµСЂРєРё',imgui.ImVec2(148, 20)) then
+				sampSendChat(string.format("/f РС‚РѕРі РїСЂРѕРІРµСЂРєРё РїРѕСЃС‚РѕРІ: Р›РѕСЃ-РЎР°РЅС‚РѕСЃ: %d/3, РЎР°РЅ-Р¤РёРµСЂСЂРѕ: %d/3, Р›Р°СЃ-Р’РµРЅС‚СѓСЂР°СЃ: %d/3", posls, possf, poslv))
 			end
 			imgui.SameLine(nil, 4)
-			if imgui.Button(u8'Обнулить посты',imgui.ImVec2(148, 20)) then
+			if imgui.Button(u8'РћР±РЅСѓР»РёС‚СЊ РїРѕСЃС‚С‹',imgui.ImVec2(148, 20)) then
 				sampAddChatMessage(string.format("[Leader-MVD] {FFFFFF}LS: %d/3 SF: %d/3 LV: %d/3", posls, possf, poslv), 0x4b58ebFF)
-				sampAddChatMessage("[Leader-MVD] {FFFFFF}Данные обнулились", 0x4b58ebFF)
+				sampAddChatMessage("[Leader-MVD] {FFFFFF}Р”Р°РЅРЅС‹Рµ РѕР±РЅСѓР»РёР»РёСЃСЊ", 0x4b58ebFF)
 				posls = 0
 				possf = 0
 				poslv = 0
@@ -527,23 +529,23 @@ function imgui.OnDrawFrame()
 			plsv = 1
 			psfv = 1
 			plvv = 1
-			--[[if imgui.InputInt(u8'Лос-Сантос ', pls, 1, 10) then
+			--[[if imgui.InputInt(u8'Р›РѕСЃ-РЎР°РЅС‚РѕСЃ ', pls, 1, 10) then
 			if plsv < pls.v then
-				sampSendChat(" /f Обнаружен патруль в городе Лос-Сантос. Кол-во патрулей на данный момент: "..pls.v) end
+				sampSendChat(" /f РћР±РЅР°СЂСѓР¶РµРЅ РїР°С‚СЂСѓР»СЊ РІ РіРѕСЂРѕРґРµ Р›РѕСЃ-РЎР°РЅС‚РѕСЃ. РљРѕР»-РІРѕ РїР°С‚СЂСѓР»РµР№ РЅР° РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚: "..pls.v) end
 				plsv = plsv + 1
 				print(plsv)
 				print(pls.v)
 			end]]
-			imgui.InputInt(u8'Сан-Фиерро ', psf, 1, 10)
-			imgui.InputInt(u8'Лас-Вентурас ', plv, 1, 10)
-			imgui.Text(u8'Кол-во патрулей в городах:')
-			imgui.Text(u8'Лос-Сантос: '..pls.v.. " |")
+			imgui.InputInt(u8'РЎР°РЅ-Р¤РёРµСЂСЂРѕ ', psf, 1, 10)
+			imgui.InputInt(u8'Р›Р°СЃ-Р’РµРЅС‚СѓСЂР°СЃ ', plv, 1, 10)
+			imgui.Text(u8'РљРѕР»-РІРѕ РїР°С‚СЂСѓР»РµР№ РІ РіРѕСЂРѕРґР°С…:')
+			imgui.Text(u8'Р›РѕСЃ-РЎР°РЅС‚РѕСЃ: '..pls.v.. " |")
 			imgui.SameLine(nil, 4)
-			imgui.Text(u8'Сан-Фиерро: '..psf.v.. " |")
+			imgui.Text(u8'РЎР°РЅ-Р¤РёРµСЂСЂРѕ: '..psf.v.. " |")
 			imgui.SameLine(nil, 4)
-			imgui.Text(u8'Лас-Вентурас: '..plv.v)
-			if imgui.Button(u8'Итог проверки',imgui.ImVec2(300, 20)) then
-				sampSendChat(string.format(" /f Итог проверки патрулей: Лос-Сантос: %s, Сан-Фиерро: %s, Лас-Вентурас: %s", pls.v, psf.v, plv.v))
+			imgui.Text(u8'Р›Р°СЃ-Р’РµРЅС‚СѓСЂР°СЃ: '..plv.v)
+			if imgui.Button(u8'РС‚РѕРі РїСЂРѕРІРµСЂРєРё',imgui.ImVec2(300, 20)) then
+				sampSendChat(string.format(" /f РС‚РѕРі РїСЂРѕРІРµСЂРєРё РїР°С‚СЂСѓР»РµР№: Р›РѕСЃ-РЎР°РЅС‚РѕСЃ: %s, РЎР°РЅ-Р¤РёРµСЂСЂРѕ: %s, Р›Р°СЃ-Р’РµРЅС‚СѓСЂР°СЃ: %s", pls.v, psf.v, plv.v))
 			end
 		end
 		imgui.EndGroup()
@@ -553,11 +555,11 @@ function imgui.OnDrawFrame()
 			local sw, sh = getScreenResolution()
 			imgui.SetNextWindowPos(imgui.ImVec2(sw / 2, sh / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(0.0, 0.0))
 			imgui.SetNextWindowSize(imgui.ImVec2(380, 110), imgui.Cond.FirstUseEver)
-			imgui.Begin(u8'Проверка постов | Los-Santos | v. 1.2 beta', tree_menu_1)
-				imgui.Text(u8'Автостанция Лос-Сантос:')
+			imgui.Begin(u8'РџСЂРѕРІРµСЂРєР° РїРѕСЃС‚РѕРІ | Los-Santos | v. 1.2 beta', tree_menu_1)
+				imgui.Text(u8'РђРІС‚РѕСЃС‚Р°РЅС†РёСЏ Р›РѕСЃ-РЎР°РЅС‚РѕСЃ:')
 				imgui.SameLine(nil, 92)
-				if imgui.Button(u8'Занято##but8',imgui.ImVec2(60, 20)) then
-					sampSendChat('/f Пост: Автостанция Лос-Сантос. Состояние: Занят')
+				if imgui.Button(u8'Р—Р°РЅСЏС‚Рѕ##but8',imgui.ImVec2(60, 20)) then
+					sampSendChat('/f РџРѕСЃС‚: РђРІС‚РѕСЃС‚Р°РЅС†РёСЏ Р›РѕСЃ-РЎР°РЅС‚РѕСЃ. РЎРѕСЃС‚РѕСЏРЅРёРµ: Р—Р°РЅСЏС‚')
 					posls = posls+1
 					printStringNow(string.format("LS: %d/3 SF: %d/3 LV: %d/3", posls, possf, poslv),3000)
 					lua_thread.create(function() wait(1000)
@@ -565,17 +567,17 @@ function imgui.OnDrawFrame()
 					end)
 				end
 				imgui.SameLine(nil, 5)
-				if imgui.Button(u8'Пусто##but8',imgui.ImVec2(60, 20)) then
-					sampSendChat('/f Пост: Автостанция Лос-Сантос. Состояние: Пусто')
+				if imgui.Button(u8'РџСѓСЃС‚Рѕ##but8',imgui.ImVec2(60, 20)) then
+					sampSendChat('/f РџРѕСЃС‚: РђРІС‚РѕСЃС‚Р°РЅС†РёСЏ Р›РѕСЃ-РЎР°РЅС‚РѕСЃ. РЎРѕСЃС‚РѕСЏРЅРёРµ: РџСѓСЃС‚Рѕ')
 					printStringNow(string.format("LS: %d/3 SF: %d/3 LV: %d/3", posls, possf, poslv),3000)
 					lua_thread.create(function() wait(1000)
 					sampSendChat('/c 60')
 					end)
 				end
-				imgui.Text(u8'Мэрия Лос-Сантос:')
+				imgui.Text(u8'РњСЌСЂРёСЏ Р›РѕСЃ-РЎР°РЅС‚РѕСЃ:')
 				imgui.SameLine(nil, 129)
-				if imgui.Button(u8'Занято##but7',imgui.ImVec2(60, 20)) then
-					sampSendChat('/f Пост: Мэрия Лос-Сантос. Состояние: Занят')
+				if imgui.Button(u8'Р—Р°РЅСЏС‚Рѕ##but7',imgui.ImVec2(60, 20)) then
+					sampSendChat('/f РџРѕСЃС‚: РњСЌСЂРёСЏ Р›РѕСЃ-РЎР°РЅС‚РѕСЃ. РЎРѕСЃС‚РѕСЏРЅРёРµ: Р—Р°РЅСЏС‚')
 					posls = posls+1
 					printStringNow(string.format("LS: %d/3 SF: %d/3 LV: %d/3", posls, possf, poslv),3000)
 					lua_thread.create(function() wait(1000)
@@ -583,17 +585,17 @@ function imgui.OnDrawFrame()
 					end)
 				end
 				imgui.SameLine(nil, 5)
-				if imgui.Button(u8'Пусто##but7',imgui.ImVec2(60, 20)) then
-					sampSendChat('/f Пост: Мэрия Лос-Сантос. Состояние: Пусто')
+				if imgui.Button(u8'РџСѓСЃС‚Рѕ##but7',imgui.ImVec2(60, 20)) then
+					sampSendChat('/f РџРѕСЃС‚: РњСЌСЂРёСЏ Р›РѕСЃ-РЎР°РЅС‚РѕСЃ. РЎРѕСЃС‚РѕСЏРЅРёРµ: РџСѓСЃС‚Рѕ')
 					printStringNow(string.format("LS: %d/3 SF: %d/3 LV: %d/3", posls, possf, poslv),3000)
 					lua_thread.create(function() wait(1000)
 					sampSendChat('/c 60')
 					end)
 				end
-				imgui.Text(u8'Железно-дорожный вокзал Лос-Сантос:')
+				imgui.Text(u8'Р–РµР»РµР·РЅРѕ-РґРѕСЂРѕР¶РЅС‹Р№ РІРѕРєР·Р°Р» Р›РѕСЃ-РЎР°РЅС‚РѕСЃ:')
 				imgui.SameLine(nil, 5)
-				if imgui.Button(u8'Занято##but6',imgui.ImVec2(60, 20)) then
-					sampSendChat('/f Пост: Железно-дорожный вокзал Лос-Сантос. Состояние: Занят')
+				if imgui.Button(u8'Р—Р°РЅСЏС‚Рѕ##but6',imgui.ImVec2(60, 20)) then
+					sampSendChat('/f РџРѕСЃС‚: Р–РµР»РµР·РЅРѕ-РґРѕСЂРѕР¶РЅС‹Р№ РІРѕРєР·Р°Р» Р›РѕСЃ-РЎР°РЅС‚РѕСЃ. РЎРѕСЃС‚РѕСЏРЅРёРµ: Р—Р°РЅСЏС‚')
 					posls = posls+1
 					printStringNow(string.format("LS: %d/3 SF: %d/3 LV: %d/3", posls, possf, poslv),3000)
 					lua_thread.create(function() wait(1000)
@@ -601,8 +603,8 @@ function imgui.OnDrawFrame()
 					end)
 				end
 				imgui.SameLine(nil, 5)
-				if imgui.Button(u8'Пусто##but6',imgui.ImVec2(60, 20)) then
-					sampSendChat('/f Пост: Железно-дорожный вокзал Лос-Сантос. Состояние: Пусто')
+				if imgui.Button(u8'РџСѓСЃС‚Рѕ##but6',imgui.ImVec2(60, 20)) then
+					sampSendChat('/f РџРѕСЃС‚: Р–РµР»РµР·РЅРѕ-РґРѕСЂРѕР¶РЅС‹Р№ РІРѕРєР·Р°Р» Р›РѕСЃ-РЎР°РЅС‚РѕСЃ. РЎРѕСЃС‚РѕСЏРЅРёРµ: РџСѓСЃС‚Рѕ')
 					printStringNow(string.format("LS: %d/3 SF: %d/3 LV: %d/3", posls, possf, poslv),3000)
 					lua_thread.create(function() wait(1000)
 					sampSendChat('/c 60')
@@ -615,11 +617,11 @@ function imgui.OnDrawFrame()
 			local sw, sh = getScreenResolution()
 			imgui.SetNextWindowPos(imgui.ImVec2(sw / 2, sh / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(0.0, 0.0))
 			imgui.SetNextWindowSize(imgui.ImVec2(380, 110), imgui.Cond.FirstUseEver)
-			imgui.Begin(u8'Проверка постов | San-Fierro | v. 1.2 beta', tree_menu_2)
-				imgui.Text(u8'Автошкола Сан-Фиерро:')
+			imgui.Begin(u8'РџСЂРѕРІРµСЂРєР° РїРѕСЃС‚РѕРІ | San-Fierro | v. 1.2 beta', tree_menu_2)
+				imgui.Text(u8'РђРІС‚РѕС€РєРѕР»Р° РЎР°РЅ-Р¤РёРµСЂСЂРѕ:')
 				imgui.SameLine(nil, 103)
-				if imgui.Button(u8'Занято##but2',imgui.ImVec2(60, 20)) then
-					sampSendChat('/f Пост: Автошкола Сан-Фиерро. Состояние: Занят')
+				if imgui.Button(u8'Р—Р°РЅСЏС‚Рѕ##but2',imgui.ImVec2(60, 20)) then
+					sampSendChat('/f РџРѕСЃС‚: РђРІС‚РѕС€РєРѕР»Р° РЎР°РЅ-Р¤РёРµСЂСЂРѕ. РЎРѕСЃС‚РѕСЏРЅРёРµ: Р—Р°РЅСЏС‚')
 					possf = possf+1
 					printStringNow(string.format("LS: %d/3 SF: %d/3 LV: %d/3", posls, possf, poslv),3000)
 					lua_thread.create(function() wait(1000)
@@ -627,18 +629,18 @@ function imgui.OnDrawFrame()
 					end)
 				end
 				imgui.SameLine(nil, 5)
-				if imgui.Button(u8'Пусто##but2',imgui.ImVec2(60, 20)) then
-					sampSendChat('/f Пост: Автошкола Сан-Фиерро. Состояние: Пусто')
+				if imgui.Button(u8'РџСѓСЃС‚Рѕ##but2',imgui.ImVec2(60, 20)) then
+					sampSendChat('/f РџРѕСЃС‚: РђРІС‚РѕС€РєРѕР»Р° РЎР°РЅ-Р¤РёРµСЂСЂРѕ. РЎРѕСЃС‚РѕСЏРЅРёРµ: РџСѓСЃС‚Рѕ')
 					printStringNow(string.format("LS: %d/3 SF: %d/3 LV: %d/3", posls, possf, poslv),3000)
 					lua_thread.create(function() wait(1000)
 					sampSendChat('/c 60')
 					end)
 				end
 				---
-				imgui.Text(u8'Мэрия Сан-Фиерро:')
+				imgui.Text(u8'РњСЌСЂРёСЏ РЎР°РЅ-Р¤РёРµСЂСЂРѕ:')
 				imgui.SameLine(nil, 130)
-				if imgui.Button(u8'Занято##but1',imgui.ImVec2(60, 20)) then
-					sampSendChat('/f Пост: Мэрия Сан-Фиерро. Состояние: Занят')
+				if imgui.Button(u8'Р—Р°РЅСЏС‚Рѕ##but1',imgui.ImVec2(60, 20)) then
+					sampSendChat('/f РџРѕСЃС‚: РњСЌСЂРёСЏ РЎР°РЅ-Р¤РёРµСЂСЂРѕ. РЎРѕСЃС‚РѕСЏРЅРёРµ: Р—Р°РЅСЏС‚')
 					possf = possf+1
 					printStringNow(string.format("LS: %d/3 SF: %d/3 LV: %d/3", posls, possf, poslv),3000)
 					lua_thread.create(function() wait(1000)
@@ -646,18 +648,18 @@ function imgui.OnDrawFrame()
 					end)
 				end
 				imgui.SameLine(nil, 5)
-				if imgui.Button(u8'Пусто##but1',imgui.ImVec2(60, 20)) then
-					sampSendChat('/f Пост: Мэрия Сан-Фиерро. Состояние: Пусто')
+				if imgui.Button(u8'РџСѓСЃС‚Рѕ##but1',imgui.ImVec2(60, 20)) then
+					sampSendChat('/f РџРѕСЃС‚: РњСЌСЂРёСЏ РЎР°РЅ-Р¤РёРµСЂСЂРѕ. РЎРѕСЃС‚РѕСЏРЅРёРµ: РџСѓСЃС‚Рѕ')
 					printStringNow(string.format("LS: %d/3 SF: %d/3 LV: %d/3", posls, possf, poslv),3000)
 					lua_thread.create(function() wait(1000)
 					sampSendChat('/c 60')
 					end)
 				end
 				---
-				imgui.Text(u8'Железно-дорожный вокзал Сан-Фиерро:')
+				imgui.Text(u8'Р–РµР»РµР·РЅРѕ-РґРѕСЂРѕР¶РЅС‹Р№ РІРѕРєР·Р°Р» РЎР°РЅ-Р¤РёРµСЂСЂРѕ:')
 				imgui.SameLine(nil, 5)
-				if imgui.Button(u8'Занято##but',imgui.ImVec2(60, 20)) then
-					sampSendChat('/f Пост: Железно-дорожный вокзал Сан-Фиерро. Состояние: Занят')
+				if imgui.Button(u8'Р—Р°РЅСЏС‚Рѕ##but',imgui.ImVec2(60, 20)) then
+					sampSendChat('/f РџРѕСЃС‚: Р–РµР»РµР·РЅРѕ-РґРѕСЂРѕР¶РЅС‹Р№ РІРѕРєР·Р°Р» РЎР°РЅ-Р¤РёРµСЂСЂРѕ. РЎРѕСЃС‚РѕСЏРЅРёРµ: Р—Р°РЅСЏС‚')
 					possf = possf+1
 					printStringNow(string.format("LS: %d/3 SF: %d/3 LV: %d/3", posls, possf, poslv),3000)
 					lua_thread.create(function() wait(1000)
@@ -665,8 +667,8 @@ function imgui.OnDrawFrame()
 					end)
 				end
 				imgui.SameLine(nil, 5)
-				if imgui.Button(u8'Пусто##but',imgui.ImVec2(60, 20)) then
-					sampSendChat('/f Пост: Железно-дорожный вокзал Сан-Фиерро. Состояние: Пусто')
+				if imgui.Button(u8'РџСѓСЃС‚Рѕ##but',imgui.ImVec2(60, 20)) then
+					sampSendChat('/f РџРѕСЃС‚: Р–РµР»РµР·РЅРѕ-РґРѕСЂРѕР¶РЅС‹Р№ РІРѕРєР·Р°Р» РЎР°РЅ-Р¤РёРµСЂСЂРѕ. РЎРѕСЃС‚РѕСЏРЅРёРµ: РџСѓСЃС‚Рѕ')
 					printStringNow(string.format("LS: %d/3 SF: %d/3 LV: %d/3", posls, possf, poslv),3000)
 					lua_thread.create(function() wait(1000)
 					sampSendChat('/c 60')
@@ -679,11 +681,11 @@ function imgui.OnDrawFrame()
 			local sw, sh = getScreenResolution()
 			imgui.SetNextWindowPos(imgui.ImVec2(sw / 2, sh / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(0.0, 0.0))
 			imgui.SetNextWindowSize(imgui.ImVec2(380, 110), imgui.Cond.FirstUseEver)
-			imgui.Begin(u8'Проверка постов | Las-Venturas | v. 1.2 beta', tree_menu_3)
-				imgui.Text(u8'Радиоцентр Лас-Вентурас:')
+			imgui.Begin(u8'РџСЂРѕРІРµСЂРєР° РїРѕСЃС‚РѕРІ | Las-Venturas | v. 1.2 beta', tree_menu_3)
+				imgui.Text(u8'Р Р°РґРёРѕС†РµРЅС‚СЂ Р›Р°СЃ-Р’РµРЅС‚СѓСЂР°СЃ:')
 				imgui.SameLine(nil, 96)
-				if imgui.Button(u8'Занято##but5',imgui.ImVec2(60, 20)) then
-					sampSendChat('/f Пост: Радиоцентр Лас-Вентурас. Состояние: Занят')
+				if imgui.Button(u8'Р—Р°РЅСЏС‚Рѕ##but5',imgui.ImVec2(60, 20)) then
+					sampSendChat('/f РџРѕСЃС‚: Р Р°РґРёРѕС†РµРЅС‚СЂ Р›Р°СЃ-Р’РµРЅС‚СѓСЂР°СЃ. РЎРѕСЃС‚РѕСЏРЅРёРµ: Р—Р°РЅСЏС‚')
 					poslv = poslv+1
 					printStringNow(string.format("LS: %d/3 SF: %d/3 LV: %d/3", posls, possf, poslv),3000)
 					lua_thread.create(function() wait(1000)
@@ -691,18 +693,18 @@ function imgui.OnDrawFrame()
 					end)
 				end
 				imgui.SameLine(nil, 5)
-				if imgui.Button(u8'Пусто##but5',imgui.ImVec2(60, 20)) then
-					sampSendChat('/f Пост: Радиоцентр Лас-Вентурас. Состояние: Пусто')
+				if imgui.Button(u8'РџСѓСЃС‚Рѕ##but5',imgui.ImVec2(60, 20)) then
+					sampSendChat('/f РџРѕСЃС‚: Р Р°РґРёРѕС†РµРЅС‚СЂ Р›Р°СЃ-Р’РµРЅС‚СѓСЂР°СЃ. РЎРѕСЃС‚РѕСЏРЅРёРµ: РџСѓСЃС‚Рѕ')
 					printStringNow(string.format("LS: %d/3 SF: %d/3 LV: %d/3", posls, possf, poslv),3000)
 					lua_thread.create(function() wait(1000)
 					sampSendChat('/c 60')
 					end)
 				end
 				---
-				imgui.Text(u8'Центральная Больница Лас-Вентурас:')
+				imgui.Text(u8'Р¦РµРЅС‚СЂР°Р»СЊРЅР°СЏ Р‘РѕР»СЊРЅРёС†Р° Р›Р°СЃ-Р’РµРЅС‚СѓСЂР°СЃ:')
 				imgui.SameLine(nil, 30)
-				if imgui.Button(u8'Занято##but4',imgui.ImVec2(60, 20)) then
-					sampSendChat('/f Пост: Центральная Больница Лас-Вентурас. Состояние: Занят')
+				if imgui.Button(u8'Р—Р°РЅСЏС‚Рѕ##but4',imgui.ImVec2(60, 20)) then
+					sampSendChat('/f РџРѕСЃС‚: Р¦РµРЅС‚СЂР°Р»СЊРЅР°СЏ Р‘РѕР»СЊРЅРёС†Р° Р›Р°СЃ-Р’РµРЅС‚СѓСЂР°СЃ. РЎРѕСЃС‚РѕСЏРЅРёРµ: Р—Р°РЅСЏС‚')
 					poslv = poslv+1
 					printStringNow(string.format("LS: %d/3 SF: %d/3 LV: %d/3", posls, possf, poslv),3000)
 					lua_thread.create(function() wait(1000)
@@ -710,18 +712,18 @@ function imgui.OnDrawFrame()
 					end)
 				end
 				imgui.SameLine(nil, 5)
-				if imgui.Button(u8'Пусто##but4',imgui.ImVec2(60, 20)) then
-					sampSendChat('/f Пост: Центральная Больница Лас-Вентурас. Состояние: Пусто')
+				if imgui.Button(u8'РџСѓСЃС‚Рѕ##but4',imgui.ImVec2(60, 20)) then
+					sampSendChat('/f РџРѕСЃС‚: Р¦РµРЅС‚СЂР°Р»СЊРЅР°СЏ Р‘РѕР»СЊРЅРёС†Р° Р›Р°СЃ-Р’РµРЅС‚СѓСЂР°СЃ. РЎРѕСЃС‚РѕСЏРЅРёРµ: РџСѓСЃС‚Рѕ')
 					printStringNow(string.format("LS: %d/3 SF: %d/3 LV: %d/3", posls, possf, poslv),3000)
 					lua_thread.create(function() wait(1000)
 					sampSendChat('/c 60')
 					end)
 				end
 				---
-				imgui.Text(u8'Железно-дорожный вокзал Лас-Вентурас:')
+				imgui.Text(u8'Р–РµР»РµР·РЅРѕ-РґРѕСЂРѕР¶РЅС‹Р№ РІРѕРєР·Р°Р» Р›Р°СЃ-Р’РµРЅС‚СѓСЂР°СЃ:')
 				imgui.SameLine(nil, 5)
-				if imgui.Button(u8'Занято##but3',imgui.ImVec2(60, 20)) then
-					sampSendChat('/f Пост: Железно-дорожный вокзал Лас-Вентурас. Состояние: Занят')
+				if imgui.Button(u8'Р—Р°РЅСЏС‚Рѕ##but3',imgui.ImVec2(60, 20)) then
+					sampSendChat('/f РџРѕСЃС‚: Р–РµР»РµР·РЅРѕ-РґРѕСЂРѕР¶РЅС‹Р№ РІРѕРєР·Р°Р» Р›Р°СЃ-Р’РµРЅС‚СѓСЂР°СЃ. РЎРѕСЃС‚РѕСЏРЅРёРµ: Р—Р°РЅСЏС‚')
 					poslv = poslv+1
 					printStringNow(string.format("LS: %d/3 SF: %d/3 LV: %d/3", posls, possf, poslv),3000)
 					lua_thread.create(function() wait(1000)
@@ -729,8 +731,8 @@ function imgui.OnDrawFrame()
 					end)
 				end
 				imgui.SameLine(nil, 5)
-				if imgui.Button(u8'Пусто##but3',imgui.ImVec2(60, 20)) then
-					sampSendChat('/f Пост: Железно-дорожный вокзал Лас-Вентурас. Состояние: Пусто')
+				if imgui.Button(u8'РџСѓСЃС‚Рѕ##but3',imgui.ImVec2(60, 20)) then
+					sampSendChat('/f РџРѕСЃС‚: Р–РµР»РµР·РЅРѕ-РґРѕСЂРѕР¶РЅС‹Р№ РІРѕРєР·Р°Р» Р›Р°СЃ-Р’РµРЅС‚СѓСЂР°СЃ. РЎРѕСЃС‚РѕСЏРЅРёРµ: РџСѓСЃС‚Рѕ')
 					printStringNow(string.format("LS: %d/3 SF: %d/3 LV: %d/3", posls, possf, poslv),3000)
 					lua_thread.create(function() wait(1000)
 					sampSendChat('/c 60')
@@ -742,27 +744,27 @@ function imgui.OnDrawFrame()
 	local sw, sh = getScreenResolution()
 	imgui.SetNextWindowPos(imgui.ImVec2(sw / 2, sh / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(0.0, 0.0))
 	imgui.SetNextWindowSize(imgui.ImVec2(300, 110), imgui.Cond.FirstUseEver)
-    imgui.Begin(u8'Сообщить в рацию | v. 1.2 beta', fo_menu)
-		if imgui.Button(u8'Строй ЛСПД',imgui.ImVec2(138, 20)) then
-			sampSendChat("/f Общий строй в гараже ЛСПД")
+    imgui.Begin(u8'РЎРѕРѕР±С‰РёС‚СЊ РІ СЂР°С†РёСЋ | v. 1.2 beta', fo_menu)
+		if imgui.Button(u8'РЎС‚СЂРѕР№ Р›РЎРџР”',imgui.ImVec2(138, 20)) then
+			sampSendChat("/f РћР±С‰РёР№ СЃС‚СЂРѕР№ РІ РіР°СЂР°Р¶Рµ Р›РЎРџР”")
 		end
 		imgui.SameLine(nil, 4)
-		if imgui.Button(u8'Строй СФПД',imgui.ImVec2(138, 20)) then
-			sampSendChat("/f Общий строй в гараже СФПД")
+		if imgui.Button(u8'РЎС‚СЂРѕР№ РЎР¤РџР”',imgui.ImVec2(138, 20)) then
+			sampSendChat("/f РћР±С‰РёР№ СЃС‚СЂРѕР№ РІ РіР°СЂР°Р¶Рµ РЎР¤РџР”")
 		end
-		if imgui.Button(u8'Строй ЛВПД',imgui.ImVec2(138, 20)) then
-			sampSendChat("/f Общий строй в гараже ЛВПД")
-		end
-		imgui.SameLine(nil, 4)
-		if imgui.Button(u8'Строй FBI',imgui.ImVec2(138, 20)) then
-			sampSendChat("/f Общий строй в офисе FBI")
-		end
-		if imgui.Button(u8'Собрание (5 мин)',imgui.ImVec2(138, 20)) then
-			sampSendChat("/f Собрание Мин. Внутренних Дел начнётся через 5 минут.")
+		if imgui.Button(u8'РЎС‚СЂРѕР№ Р›Р’РџР”',imgui.ImVec2(138, 20)) then
+			sampSendChat("/f РћР±С‰РёР№ СЃС‚СЂРѕР№ РІ РіР°СЂР°Р¶Рµ Р›Р’РџР”")
 		end
 		imgui.SameLine(nil, 4)
-		if imgui.Button(u8"Проверка /find'a",imgui.ImVec2(138, 20)) then
-			sampSendChat(string.format("/f WSPD, доложите кол-во сотрудников в Штате! FBI на номер %s", mainIni.settings.phone))
+		if imgui.Button(u8'РЎС‚СЂРѕР№ FBI',imgui.ImVec2(138, 20)) then
+			sampSendChat("/f РћР±С‰РёР№ СЃС‚СЂРѕР№ РІ РѕС„РёСЃРµ FBI")
+		end
+		if imgui.Button(u8'РЎРѕР±СЂР°РЅРёРµ (5 РјРёРЅ)',imgui.ImVec2(138, 20)) then
+			sampSendChat("/f РЎРѕР±СЂР°РЅРёРµ РњРёРЅ. Р’РЅСѓС‚СЂРµРЅРЅРёС… Р”РµР» РЅР°С‡РЅС‘С‚СЃСЏ С‡РµСЂРµР· 5 РјРёРЅСѓС‚.")
+		end
+		imgui.SameLine(nil, 4)
+		if imgui.Button(u8"РџСЂРѕРІРµСЂРєР° /find'a",imgui.ImVec2(138, 20)) then
+			sampSendChat(string.format("/f WSPD, РґРѕР»РѕР¶РёС‚Рµ РєРѕР»-РІРѕ СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ РІ РЁС‚Р°С‚Рµ! FBI РЅР° РЅРѕРјРµСЂ %s", mainIni.settings.phone))
 		end
 	imgui.End()
 	end
@@ -770,21 +772,21 @@ function imgui.OnDrawFrame()
     local sw, sh = getScreenResolution()
     imgui.SetNextWindowPos(imgui.ImVec2(sw / 2, sh / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(0.0, 0.0))
     imgui.SetNextWindowSize(imgui.ImVec2(300, 130), imgui.Cond.FirstUseEver)
-    imgui.Begin(u8'Поставить лидера | v. 1.2 beta', five_menu)
+    imgui.Begin(u8'РџРѕСЃС‚Р°РІРёС‚СЊ Р»РёРґРµСЂР° | v. 1.2 beta', five_menu)
         imgui.InputInt(u8'ID ', new_id, 1, 10)
-        if imgui.Combo(u8'Лидерка', new_frak, {u8'ЛСПД',u8'СФПД',u8'ЛВПД',u8'FBI'}) then
-            if new_frak.v == 0 then name_lid = 'Полиции Лос-Сантоса' end
-            if new_frak.v == 1 then name_lid = 'Полиции Сан-Фиерро' end
-            if new_frak.v == 2 then name_lid = 'Полиции Лас Вентураса' end
-            if new_frak.v == 3 then name_lid = 'ФБР' end
+        if imgui.Combo(u8'Р›РёРґРµСЂРєР°', new_frak, {u8'Р›РЎРџР”',u8'РЎР¤РџР”',u8'Р›Р’РџР”',u8'FBI'}) then
+            if new_frak.v == 0 then name_lid = 'РџРѕР»РёС†РёРё Р›РѕСЃ-РЎР°РЅС‚РѕСЃР°' end
+            if new_frak.v == 1 then name_lid = 'РџРѕР»РёС†РёРё РЎР°РЅ-Р¤РёРµСЂСЂРѕ' end
+            if new_frak.v == 2 then name_lid = 'РџРѕР»РёС†РёРё Р›Р°СЃ Р’РµРЅС‚СѓСЂР°СЃР°' end
+            if new_frak.v == 3 then name_lid = 'Р¤Р‘Р ' end
         end
         if sampIsPlayerConnected(new_id.v) then
             local nick = sampGetPlayerNickname(new_id.v)
-			imgui.Text(u8(string.format('Вы собираетесь поставить %s на пост лидера %s',nick, name_lid)))
+			imgui.Text(u8(string.format('Р’С‹ СЃРѕР±РёСЂР°РµС‚РµСЃСЊ РїРѕСЃС‚Р°РІРёС‚СЊ %s РЅР° РїРѕСЃС‚ Р»РёРґРµСЂР° %s',nick, name_lid)))
 			else
-			imgui.Text(u8'Указан неверный ID, или игрок не подключен.')
+			imgui.Text(u8'РЈРєР°Р·Р°РЅ РЅРµРІРµСЂРЅС‹Р№ ID, РёР»Рё РёРіСЂРѕРє РЅРµ РїРѕРґРєР»СЋС‡РµРЅ.')
 		end
-        if imgui.Button(u8'Поставить лидера') then
+        if imgui.Button(u8'РџРѕСЃС‚Р°РІРёС‚СЊ Р»РёРґРµСЂР°') then
             sampSendChat(string.format(" /newleader %s %s", new_id.v, new_frak.v))
 		end
 	imgui.End()
@@ -793,67 +795,67 @@ function imgui.OnDrawFrame()
 	local sw, sh = getScreenResolution()
 	imgui.SetNextWindowPos(imgui.ImVec2(sw / 2, sh / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(0.0, 0.0))
 	imgui.SetNextWindowSize(imgui.ImVec2(250, 145), imgui.Cond.FirstUseEver)
-    imgui.Begin(u8'Поставить лидера | v. 1.2 beta', seven_menu)
+    imgui.Begin(u8'РџРѕСЃС‚Р°РІРёС‚СЊ Р»РёРґРµСЂР° | v. 1.2 beta', seven_menu)
 		imgui.Text(u8'v. 0.1:')
 		imgui.SameLine(nil, 5)
 		imgui.TextQuestion(u8' ..::Release::..')
 		imgui.SameLine(nil, 20)
 		imgui.Text(u8'v. 1.1 beta:')
 		imgui.SameLine(nil, 5)
-		imgui.TextQuestion(u8'-Добавлен выбор стиля скрипта\n-Исправлен баг с проверкой постов\n-Добавлена функция "Поставить лидера"')
+		imgui.TextQuestion(u8'-Р”РѕР±Р°РІР»РµРЅ РІС‹Р±РѕСЂ СЃС‚РёР»СЏ СЃРєСЂРёРїС‚Р°\n-РСЃРїСЂР°РІР»РµРЅ Р±Р°Рі СЃ РїСЂРѕРІРµСЂРєРѕР№ РїРѕСЃС‚РѕРІ\n-Р”РѕР±Р°РІР»РµРЅР° С„СѓРЅРєС†РёСЏ "РџРѕСЃС‚Р°РІРёС‚СЊ Р»РёРґРµСЂР°"')
 		imgui.Text(u8'v. 0.2:')
 		imgui.SameLine(nil, 5)
-		imgui.TextQuestion(u8'- Добавлена функция: Автоматичиский счётчик постов\n- Теперь работает кнопка: Итог проверки постов.\n- Добавлены /gnews для: ЛС/СФ/ЛВПД.')
+		imgui.TextQuestion(u8'- Р”РѕР±Р°РІР»РµРЅР° С„СѓРЅРєС†РёСЏ: РђРІС‚РѕРјР°С‚РёС‡РёСЃРєРёР№ СЃС‡С‘С‚С‡РёРє РїРѕСЃС‚РѕРІ\n- РўРµРїРµСЂСЊ СЂР°Р±РѕС‚Р°РµС‚ РєРЅРѕРїРєР°: РС‚РѕРі РїСЂРѕРІРµСЂРєРё РїРѕСЃС‚РѕРІ.\n- Р”РѕР±Р°РІР»РµРЅС‹ /gnews РґР»СЏ: Р›РЎ/РЎР¤/Р›Р’РџР”.')
 		imgui.SameLine(nil, 20)
 		imgui.Text(u8'v. 1.2 beta:')
 		imgui.SameLine(nil, 5)
-		imgui.TextQuestion(u8'- Добавлены РП отыгровки команд\n-Активация РП отыгровок в настройках\n- Изменена структура скрипта\n- В гос. новостях добавлено время\n-Добавлен ЕПК (/епк)')
+		imgui.TextQuestion(u8'- Р”РѕР±Р°РІР»РµРЅС‹ Р Рџ РѕС‚С‹РіСЂРѕРІРєРё РєРѕРјР°РЅРґ\n-РђРєС‚РёРІР°С†РёСЏ Р Рџ РѕС‚С‹РіСЂРѕРІРѕРє РІ РЅР°СЃС‚СЂРѕР№РєР°С…\n- РР·РјРµРЅРµРЅР° СЃС‚СЂСѓРєС‚СѓСЂР° СЃРєСЂРёРїС‚Р°\n- Р’ РіРѕСЃ. РЅРѕРІРѕСЃС‚СЏС… РґРѕР±Р°РІР»РµРЅРѕ РІСЂРµРјСЏ\n-Р”РѕР±Р°РІР»РµРЅ Р•РџРљ (/РµРїРє)')
 		imgui.Text(u8'v. 0.3:')
 		imgui.SameLine(nil, 5)
-		imgui.TextQuestion(u8'- Добавлена функция: Обнуление счётчика постов.\n - Исправлены найденные баги.\n - Обновлены ответы для собеседований.')
+		imgui.TextQuestion(u8'- Р”РѕР±Р°РІР»РµРЅР° С„СѓРЅРєС†РёСЏ: РћР±РЅСѓР»РµРЅРёРµ СЃС‡С‘С‚С‡РёРєР° РїРѕСЃС‚РѕРІ.\n - РСЃРїСЂР°РІР»РµРЅС‹ РЅР°Р№РґРµРЅРЅС‹Рµ Р±Р°РіРё.\n - РћР±РЅРѕРІР»РµРЅС‹ РѕС‚РІРµС‚С‹ РґР»СЏ СЃРѕР±РµСЃРµРґРѕРІР°РЅРёР№.')
 		imgui.Text(u8'v. 0.4:')
 		imgui.SameLine(nil, 5)
-		imgui.TextQuestion(u8'- Исправлены некторые баги.\n - Добавлены несколько новый гос. новостей для Министра.')
+		imgui.TextQuestion(u8'- РСЃРїСЂР°РІР»РµРЅС‹ РЅРµРєС‚РѕСЂС‹Рµ Р±Р°РіРё.\n - Р”РѕР±Р°РІР»РµРЅС‹ РЅРµСЃРєРѕР»СЊРєРѕ РЅРѕРІС‹Р№ РіРѕСЃ. РЅРѕРІРѕСЃС‚РµР№ РґР»СЏ РњРёРЅРёСЃС‚СЂР°.')
 		imgui.Text(u8'v. 0.5:')
 		imgui.SameLine(nil, 5)
-		imgui.TextQuestion(u8'- Исправлены баги/ошибки. ')
+		imgui.TextQuestion(u8'- РСЃРїСЂР°РІР»РµРЅС‹ Р±Р°РіРё/РѕС€РёР±РєРё. ')
 		imgui.Text(u8'v. 1.0 beta:')
 		imgui.SameLine(nil, 5)
-		imgui.TextQuestion(u8'- Новый дизайн\n-Убраны некоторые функции')
+		imgui.TextQuestion(u8'- РќРѕРІС‹Р№ РґРёР·Р°Р№РЅ\n-РЈР±СЂР°РЅС‹ РЅРµРєРѕС‚РѕСЂС‹Рµ С„СѓРЅРєС†РёРё')
 	imgui.End()
 	end
 	if ten_menu.v then
 	local sw, sh = getScreenResolution()
 	imgui.SetNextWindowPos(imgui.ImVec2(sw / 2, sh / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(-1.2, -1.0))
 	imgui.SetNextWindowSize(imgui.ImVec2(150, 105), imgui.Cond.FirstUseEver)
-    imgui.Begin(u8'Обыск | v. 1.2 beta', ten_menu)
-		if imgui.Button(u8"Ничего не нашли",imgui.ImVec2(135, 20)) then
-			sampSendChat("Сэр, мы у вас ничего не нашли. Вы свободны.")
+    imgui.Begin(u8'РћР±С‹СЃРє | v. 1.2 beta', ten_menu)
+		if imgui.Button(u8"РќРёС‡РµРіРѕ РЅРµ РЅР°С€Р»Рё",imgui.ImVec2(135, 20)) then
+			sampSendChat("РЎСЌСЂ, РјС‹ Сѓ РІР°СЃ РЅРёС‡РµРіРѕ РЅРµ РЅР°С€Р»Рё. Р’С‹ СЃРІРѕР±РѕРґРЅС‹.")
 		end
-		if imgui.Button(u8"Нашли наркотики",imgui.ImVec2(135, 20)) then
-			sampSendChat("/me нашёл пакетик с кокаином")
+		if imgui.Button(u8"РќР°С€Р»Рё РЅР°СЂРєРѕС‚РёРєРё",imgui.ImVec2(135, 20)) then
+			sampSendChat("/me РЅР°С€С‘Р» РїР°РєРµС‚РёРє СЃ РєРѕРєР°РёРЅРѕРј")
 		lua_thread.create(function() wait(1000)
-			sampSendChat("/me отобрал пакетик")
+			sampSendChat("/me РѕС‚РѕР±СЂР°Р» РїР°РєРµС‚РёРє")
 			wait(1000)
-			sampSendChat("/me достал из кармана пакет для улик")
+			sampSendChat("/me РґРѕСЃС‚Р°Р» РёР· РєР°СЂРјР°РЅР° РїР°РєРµС‚ РґР»СЏ СѓР»РёРє")
 			wait(1000)
-			sampSendChat("/me убрал наркотики в пакет")
+			sampSendChat("/me СѓР±СЂР°Р» РЅР°СЂРєРѕС‚РёРєРё РІ РїР°РєРµС‚")
 		end)
 		lua_thread.create(function() wait(4000)
-			sampAddChatMessage("[Leader-MVD] {FFFFFF} Используйте команду /remove [ID] [D] для изъятия наркотиков.", 0x4b58ebFF)
+			sampAddChatMessage("[Leader-MVD] {FFFFFF} РСЃРїРѕР»СЊР·СѓР№С‚Рµ РєРѕРјР°РЅРґСѓ /remove [ID] [D] РґР»СЏ РёР·СЉСЏС‚РёСЏ РЅР°СЂРєРѕС‚РёРєРѕРІ.", 0x4b58ebFF)
 		end)
 		end
-		if imgui.Button(u8"Нашли патроны",imgui.ImVec2(135, 20)) then
-			sampSendChat("/me нашёл коробочку с патронами")
+		if imgui.Button(u8"РќР°С€Р»Рё РїР°С‚СЂРѕРЅС‹",imgui.ImVec2(135, 20)) then
+			sampSendChat("/me РЅР°С€С‘Р» РєРѕСЂРѕР±РѕС‡РєСѓ СЃ РїР°С‚СЂРѕРЅР°РјРё")
 		lua_thread.create(function() wait(1000)
-			sampSendChat("/me отобрал коробочку")
+			sampSendChat("/me РѕС‚РѕР±СЂР°Р» РєРѕСЂРѕР±РѕС‡РєСѓ")
 			wait(1000)
-			sampSendChat("/me достал пакет для улик")
+			sampSendChat("/me РґРѕСЃС‚Р°Р» РїР°РєРµС‚ РґР»СЏ СѓР»РёРє")
 			wait(1000)
-			sampSendChat("/me убрал коробочку в пакет")
+			sampSendChat("/me СѓР±СЂР°Р» РєРѕСЂРѕР±РѕС‡РєСѓ РІ РїР°РєРµС‚")
 		end)
 		lua_thread.create(function() wait(4000)
-			sampAddChatMessage("[Leader-MVD] {FFFFFF} Используйте команду /remove [ID] [P] для изъятия патрон.", 0x4b58ebFF)
+			sampAddChatMessage("[Leader-MVD] {FFFFFF} РСЃРїРѕР»СЊР·СѓР№С‚Рµ РєРѕРјР°РЅРґСѓ /remove [ID] [P] РґР»СЏ РёР·СЉСЏС‚РёСЏ РїР°С‚СЂРѕРЅ.", 0x4b58ebFF)
 		end)
 		end
 	imgui.End()
@@ -862,104 +864,104 @@ function imgui.OnDrawFrame()
 	local sw, sh = getScreenResolution()
 	imgui.SetNextWindowPos(imgui.ImVec2(sw / 2, sh / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(0.5, 0.5))
 	imgui.SetNextWindowSize(imgui.ImVec2(1130, 600), imgui.Cond.FirstUseEver)
-    imgui.Begin(u8'Единый процессуальный кодекс	| v. 1.2 beta', ten_menu_one)
-	imgui.Text(u8[[Единый процессуальный кодекс.?
-[1] - Преступления против граждан штата/гос.служащих.
+    imgui.Begin(u8'Р•РґРёРЅС‹Р№ РїСЂРѕС†РµСЃСЃСѓР°Р»СЊРЅС‹Р№ РєРѕРґРµРєСЃ	| v. 1.2 beta', ten_menu_one)
+	imgui.Text(u8[[Р•РґРёРЅС‹Р№ РїСЂРѕС†РµСЃСЃСѓР°Р»СЊРЅС‹Р№ РєРѕРґРµРєСЃ.?
+[1] - РџСЂРµСЃС‚СѓРїР»РµРЅРёСЏ РїСЂРѕС‚РёРІ РіСЂР°Р¶РґР°РЅ С€С‚Р°С‚Р°/РіРѕСЃ.СЃР»СѓР¶Р°С‰РёС….
 
-1.1 - За любое нападение на граждана штат/гос.служащего с причинением тяжких телесных повреждений преступнику присваивается 2 уровень розыска.
-1.2 - За любое нападение на граждана штат/гос.служащего повлекшее за собой гибель, преступнику присваивается 4 уровень розыска.
-1.3 - За угрозы гражданину в виде расправы или любом другом действии, нарушителю присваивается 1 уровень розыска.
-1.4 - За вымогательство денежных средств путём угроз и насилия, 2-й уровень розыска.
-1.5 - За оскорбление чести и достоинства любого гражданина преступнику присваивается 1 уровень розыск и штраф в виде 2.000$
-1.6 - За организацию/участие в нелегальных азартных играх преступнику присваивается 1 уровень розыска и штраф в виде 2.000$
-1.7 - За соучастие в преступлении, преступнику присваивается 1-6-ый уровень розыска (выдаётся такое же уровень розыска как и преступнику)
-1.8 - За угон или попытку угона транспортного средства нарушителю присваивается 1й уровень розыска.]])
-imgui.Text(u8[[[2] - Действия против министерства внутренних дел.
+1.1 - Р—Р° Р»СЋР±РѕРµ РЅР°РїР°РґРµРЅРёРµ РЅР° РіСЂР°Р¶РґР°РЅР° С€С‚Р°С‚/РіРѕСЃ.СЃР»СѓР¶Р°С‰РµРіРѕ СЃ РїСЂРёС‡РёРЅРµРЅРёРµРј С‚СЏР¶РєРёС… С‚РµР»РµСЃРЅС‹С… РїРѕРІСЂРµР¶РґРµРЅРёР№ РїСЂРµСЃС‚СѓРїРЅРёРєСѓ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 2 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.
+1.2 - Р—Р° Р»СЋР±РѕРµ РЅР°РїР°РґРµРЅРёРµ РЅР° РіСЂР°Р¶РґР°РЅР° С€С‚Р°С‚/РіРѕСЃ.СЃР»СѓР¶Р°С‰РµРіРѕ РїРѕРІР»РµРєС€РµРµ Р·Р° СЃРѕР±РѕР№ РіРёР±РµР»СЊ, РїСЂРµСЃС‚СѓРїРЅРёРєСѓ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 4 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.
+1.3 - Р—Р° СѓРіСЂРѕР·С‹ РіСЂР°Р¶РґР°РЅРёРЅСѓ РІ РІРёРґРµ СЂР°СЃРїСЂР°РІС‹ РёР»Рё Р»СЋР±РѕРј РґСЂСѓРіРѕРј РґРµР№СЃС‚РІРёРё, РЅР°СЂСѓС€РёС‚РµР»СЋ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 1 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.
+1.4 - Р—Р° РІС‹РјРѕРіР°С‚РµР»СЊСЃС‚РІРѕ РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ РїСѓС‚С‘Рј СѓРіСЂРѕР· Рё РЅР°СЃРёР»РёСЏ, 2-Р№ СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.
+1.5 - Р—Р° РѕСЃРєРѕСЂР±Р»РµРЅРёРµ С‡РµСЃС‚Рё Рё РґРѕСЃС‚РѕРёРЅСЃС‚РІР° Р»СЋР±РѕРіРѕ РіСЂР°Р¶РґР°РЅРёРЅР° РїСЂРµСЃС‚СѓРїРЅРёРєСѓ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 1 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРє Рё С€С‚СЂР°С„ РІ РІРёРґРµ 2.000$
+1.6 - Р—Р° РѕСЂРіР°РЅРёР·Р°С†РёСЋ/СѓС‡Р°СЃС‚РёРµ РІ РЅРµР»РµРіР°Р»СЊРЅС‹С… Р°Р·Р°СЂС‚РЅС‹С… РёРіСЂР°С… РїСЂРµСЃС‚СѓРїРЅРёРєСѓ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 1 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР° Рё С€С‚СЂР°С„ РІ РІРёРґРµ 2.000$
+1.7 - Р—Р° СЃРѕСѓС‡Р°СЃС‚РёРµ РІ РїСЂРµСЃС‚СѓРїР»РµРЅРёРё, РїСЂРµСЃС‚СѓРїРЅРёРєСѓ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 1-6-С‹Р№ СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР° (РІС‹РґР°С‘С‚СЃСЏ С‚Р°РєРѕРµ Р¶Рµ СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР° РєР°Рє Рё РїСЂРµСЃС‚СѓРїРЅРёРєСѓ)
+1.8 - Р—Р° СѓРіРѕРЅ РёР»Рё РїРѕРїС‹С‚РєСѓ СѓРіРѕРЅР° С‚СЂР°РЅСЃРїРѕСЂС‚РЅРѕРіРѕ СЃСЂРµРґСЃС‚РІР° РЅР°СЂСѓС€РёС‚РµР»СЋ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 1Р№ СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.]])
+imgui.Text(u8[[[2] - Р”РµР№СЃС‚РІРёСЏ РїСЂРѕС‚РёРІ РјРёРЅРёСЃС‚РµСЂСЃС‚РІР° РІРЅСѓС‚СЂРµРЅРЅРёС… РґРµР».
 
-2.1 - За предложение взятки сотруднику правоохранительных органов при исполнении, преступнику присваивается 2-ой уровень розыска.
-2.2 - За воспрепятствование действиям сотрудника правоохранительных органов по задержанию преступника гражданину присваивается 2-ой уровень розыска.
-2.3 - За неподчинение сотруднику правоохранительных органов, если того требует следствие, преступнику присваивается 2-ый уровень розыска.
-2.4 - За проникновение на территорию ФБР или полицейских департаментов без каких-либо весомых причин преступнику дается отсчет до 5 чтобы 
-покинуть территорию, в противном случае 1 уровень розыска.
-2.5 - За проникновение в служебный автомобиль нарушителю даётся 5 секунд чтобы покинуть его а затем присваивается 1-й уровень розыска.
-2.6 - За оскорбление чести и достоинства сотрудника МВД нарушителю присваивается 1 уровень розыска и выписывается штраф в виде 2.000$
-2.7 - За угрозы сотруднику МВД в виде расправы или любом другом действии, нарушителю присваивается 2 уровень розыска.
-2.8 - За покрывательскую деятельность преступника сотрудником МВД, сотрудник получает увольнение и присваивается 5 уровень розыска.
-2.9 - За дачу заведомо ложных показаний, которые могут завести следствие в тупик преступнику присваивается 4 уровень розыска.]])
-imgui.Text(u8[[?[3] - Наркотические вещества, оружие и предметы запрещенные в штате.
-3.1 - За хранение и употребление наркотических веществ или других психотропных преппаратов нарушителю присваивается 3 уровень розыска и последующее 
-изъятие веществ.
-3.2 - За продажу/покупку/распространение наркотических веществ или других психотропных преппаратов нарушителю присваивается 3 уровень розыска и 
-последующее изъятие веществ.
-3.3 - За призыв к употреблению наркотических веществ или других психотропных преппаратов нарушителю присваивается 1 уровень розыска и выписывается 
-штраф в размере 1.500$
-3.4 - За ношение оружия в открытом виде,если того не требует ситуация, преступнику присваивается 1 уровень розыска и изъятие оружия.
-3.5 - За хранение/транспортировку боеприпасов в любом количестве преступнику присваивается 1 уровень розыска и последующее изъятие.
-Исключение: 1-2 ранги мэрий/АП, сотрудники МВД, военнослужащие.
-3.6 - За продажу/покупку/распространение оружия или боеприпасов преступнику присваивается 2 уровень розыска и последующее изъятие.
-3.7 - За кражу боеприпасов с объектов министерства обороны преступнику присваивается 1 уровень розыска и последующее изъятие.
-3.8 - За транспортировку патронов в особо больших количествах(ящики в авто) лицами, не состоящими на службе в Министерстве Обороны, преступнику 
-присваивается 4-й уровень розыска
-Oстановка транспортного средства может быть произведена лишь по причине нарушения другой статьи, по РП нельзя определить есть в машине патроны или нет.]])
-imgui.Text(u8[[[4] - Преступления против государственного режима или имущества.
+2.1 - Р—Р° РїСЂРµРґР»РѕР¶РµРЅРёРµ РІР·СЏС‚РєРё СЃРѕС‚СЂСѓРґРЅРёРєСѓ РїСЂР°РІРѕРѕС…СЂР°РЅРёС‚РµР»СЊРЅС‹С… РѕСЂРіР°РЅРѕРІ РїСЂРё РёСЃРїРѕР»РЅРµРЅРёРё, РїСЂРµСЃС‚СѓРїРЅРёРєСѓ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 2-РѕР№ СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.
+2.2 - Р—Р° РІРѕСЃРїСЂРµРїСЏС‚СЃС‚РІРѕРІР°РЅРёРµ РґРµР№СЃС‚РІРёСЏРј СЃРѕС‚СЂСѓРґРЅРёРєР° РїСЂР°РІРѕРѕС…СЂР°РЅРёС‚РµР»СЊРЅС‹С… РѕСЂРіР°РЅРѕРІ РїРѕ Р·Р°РґРµСЂР¶Р°РЅРёСЋ РїСЂРµСЃС‚СѓРїРЅРёРєР° РіСЂР°Р¶РґР°РЅРёРЅСѓ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 2-РѕР№ СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.
+2.3 - Р—Р° РЅРµРїРѕРґС‡РёРЅРµРЅРёРµ СЃРѕС‚СЂСѓРґРЅРёРєСѓ РїСЂР°РІРѕРѕС…СЂР°РЅРёС‚РµР»СЊРЅС‹С… РѕСЂРіР°РЅРѕРІ, РµСЃР»Рё С‚РѕРіРѕ С‚СЂРµР±СѓРµС‚ СЃР»РµРґСЃС‚РІРёРµ, РїСЂРµСЃС‚СѓРїРЅРёРєСѓ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 2-С‹Р№ СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.
+2.4 - Р—Р° РїСЂРѕРЅРёРєРЅРѕРІРµРЅРёРµ РЅР° С‚РµСЂСЂРёС‚РѕСЂРёСЋ Р¤Р‘Р  РёР»Рё РїРѕР»РёС†РµР№СЃРєРёС… РґРµРїР°СЂС‚Р°РјРµРЅС‚РѕРІ Р±РµР· РєР°РєРёС…-Р»РёР±Рѕ РІРµСЃРѕРјС‹С… РїСЂРёС‡РёРЅ РїСЂРµСЃС‚СѓРїРЅРёРєСѓ РґР°РµС‚СЃСЏ РѕС‚СЃС‡РµС‚ РґРѕ 5 С‡С‚РѕР±С‹ 
+РїРѕРєРёРЅСѓС‚СЊ С‚РµСЂСЂРёС‚РѕСЂРёСЋ, РІ РїСЂРѕС‚РёРІРЅРѕРј СЃР»СѓС‡Р°Рµ 1 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.
+2.5 - Р—Р° РїСЂРѕРЅРёРєРЅРѕРІРµРЅРёРµ РІ СЃР»СѓР¶РµР±РЅС‹Р№ Р°РІС‚РѕРјРѕР±РёР»СЊ РЅР°СЂСѓС€РёС‚РµР»СЋ РґР°С‘С‚СЃСЏ 5 СЃРµРєСѓРЅРґ С‡С‚РѕР±С‹ РїРѕРєРёРЅСѓС‚СЊ РµРіРѕ Р° Р·Р°С‚РµРј РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 1-Р№ СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.
+2.6 - Р—Р° РѕСЃРєРѕСЂР±Р»РµРЅРёРµ С‡РµСЃС‚Рё Рё РґРѕСЃС‚РѕРёРЅСЃС‚РІР° СЃРѕС‚СЂСѓРґРЅРёРєР° РњР’Р” РЅР°СЂСѓС€РёС‚РµР»СЋ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 1 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР° Рё РІС‹РїРёСЃС‹РІР°РµС‚СЃСЏ С€С‚СЂР°С„ РІ РІРёРґРµ 2.000$
+2.7 - Р—Р° СѓРіСЂРѕР·С‹ СЃРѕС‚СЂСѓРґРЅРёРєСѓ РњР’Р” РІ РІРёРґРµ СЂР°СЃРїСЂР°РІС‹ РёР»Рё Р»СЋР±РѕРј РґСЂСѓРіРѕРј РґРµР№СЃС‚РІРёРё, РЅР°СЂСѓС€РёС‚РµР»СЋ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 2 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.
+2.8 - Р—Р° РїРѕРєСЂС‹РІР°С‚РµР»СЊСЃРєСѓСЋ РґРµСЏС‚РµР»СЊРЅРѕСЃС‚СЊ РїСЂРµСЃС‚СѓРїРЅРёРєР° СЃРѕС‚СЂСѓРґРЅРёРєРѕРј РњР’Р”, СЃРѕС‚СЂСѓРґРЅРёРє РїРѕР»СѓС‡Р°РµС‚ СѓРІРѕР»СЊРЅРµРЅРёРµ Рё РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 5 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.
+2.9 - Р—Р° РґР°С‡Сѓ Р·Р°РІРµРґРѕРјРѕ Р»РѕР¶РЅС‹С… РїРѕРєР°Р·Р°РЅРёР№, РєРѕС‚РѕСЂС‹Рµ РјРѕРіСѓС‚ Р·Р°РІРµСЃС‚Рё СЃР»РµРґСЃС‚РІРёРµ РІ С‚СѓРїРёРє РїСЂРµСЃС‚СѓРїРЅРёРєСѓ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 4 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.]])
+imgui.Text(u8[[?[3] - РќР°СЂРєРѕС‚РёС‡РµСЃРєРёРµ РІРµС‰РµСЃС‚РІР°, РѕСЂСѓР¶РёРµ Рё РїСЂРµРґРјРµС‚С‹ Р·Р°РїСЂРµС‰РµРЅРЅС‹Рµ РІ С€С‚Р°С‚Рµ.
+3.1 - Р—Р° С…СЂР°РЅРµРЅРёРµ Рё СѓРїРѕС‚СЂРµР±Р»РµРЅРёРµ РЅР°СЂРєРѕС‚РёС‡РµСЃРєРёС… РІРµС‰РµСЃС‚РІ РёР»Рё РґСЂСѓРіРёС… РїСЃРёС…РѕС‚СЂРѕРїРЅС‹С… РїСЂРµРїРїР°СЂР°С‚РѕРІ РЅР°СЂСѓС€РёС‚РµР»СЋ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 3 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР° Рё РїРѕСЃР»РµРґСѓСЋС‰РµРµ 
+РёР·СЉСЏС‚РёРµ РІРµС‰РµСЃС‚РІ.
+3.2 - Р—Р° РїСЂРѕРґР°Р¶Сѓ/РїРѕРєСѓРїРєСѓ/СЂР°СЃРїСЂРѕСЃС‚СЂР°РЅРµРЅРёРµ РЅР°СЂРєРѕС‚РёС‡РµСЃРєРёС… РІРµС‰РµСЃС‚РІ РёР»Рё РґСЂСѓРіРёС… РїСЃРёС…РѕС‚СЂРѕРїРЅС‹С… РїСЂРµРїРїР°СЂР°С‚РѕРІ РЅР°СЂСѓС€РёС‚РµР»СЋ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 3 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР° Рё 
+РїРѕСЃР»РµРґСѓСЋС‰РµРµ РёР·СЉСЏС‚РёРµ РІРµС‰РµСЃС‚РІ.
+3.3 - Р—Р° РїСЂРёР·С‹РІ Рє СѓРїРѕС‚СЂРµР±Р»РµРЅРёСЋ РЅР°СЂРєРѕС‚РёС‡РµСЃРєРёС… РІРµС‰РµСЃС‚РІ РёР»Рё РґСЂСѓРіРёС… РїСЃРёС…РѕС‚СЂРѕРїРЅС‹С… РїСЂРµРїРїР°СЂР°С‚РѕРІ РЅР°СЂСѓС€РёС‚РµР»СЋ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 1 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР° Рё РІС‹РїРёСЃС‹РІР°РµС‚СЃСЏ 
+С€С‚СЂР°С„ РІ СЂР°Р·РјРµСЂРµ 1.500$
+3.4 - Р—Р° РЅРѕС€РµРЅРёРµ РѕСЂСѓР¶РёСЏ РІ РѕС‚РєСЂС‹С‚РѕРј РІРёРґРµ,РµСЃР»Рё С‚РѕРіРѕ РЅРµ С‚СЂРµР±СѓРµС‚ СЃРёС‚СѓР°С†РёСЏ, РїСЂРµСЃС‚СѓРїРЅРёРєСѓ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 1 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР° Рё РёР·СЉСЏС‚РёРµ РѕСЂСѓР¶РёСЏ.
+3.5 - Р—Р° С…СЂР°РЅРµРЅРёРµ/С‚СЂР°РЅСЃРїРѕСЂС‚РёСЂРѕРІРєСѓ Р±РѕРµРїСЂРёРїР°СЃРѕРІ РІ Р»СЋР±РѕРј РєРѕР»РёС‡РµСЃС‚РІРµ РїСЂРµСЃС‚СѓРїРЅРёРєСѓ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 1 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР° Рё РїРѕСЃР»РµРґСѓСЋС‰РµРµ РёР·СЉСЏС‚РёРµ.
+РСЃРєР»СЋС‡РµРЅРёРµ: 1-2 СЂР°РЅРіРё РјСЌСЂРёР№/РђРџ, СЃРѕС‚СЂСѓРґРЅРёРєРё РњР’Р”, РІРѕРµРЅРЅРѕСЃР»СѓР¶Р°С‰РёРµ.
+3.6 - Р—Р° РїСЂРѕРґР°Р¶Сѓ/РїРѕРєСѓРїРєСѓ/СЂР°СЃРїСЂРѕСЃС‚СЂР°РЅРµРЅРёРµ РѕСЂСѓР¶РёСЏ РёР»Рё Р±РѕРµРїСЂРёРїР°СЃРѕРІ РїСЂРµСЃС‚СѓРїРЅРёРєСѓ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 2 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР° Рё РїРѕСЃР»РµРґСѓСЋС‰РµРµ РёР·СЉСЏС‚РёРµ.
+3.7 - Р—Р° РєСЂР°Р¶Сѓ Р±РѕРµРїСЂРёРїР°СЃРѕРІ СЃ РѕР±СЉРµРєС‚РѕРІ РјРёРЅРёСЃС‚РµСЂСЃС‚РІР° РѕР±РѕСЂРѕРЅС‹ РїСЂРµСЃС‚СѓРїРЅРёРєСѓ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 1 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР° Рё РїРѕСЃР»РµРґСѓСЋС‰РµРµ РёР·СЉСЏС‚РёРµ.
+3.8 - Р—Р° С‚СЂР°РЅСЃРїРѕСЂС‚РёСЂРѕРІРєСѓ РїР°С‚СЂРѕРЅРѕРІ РІ РѕСЃРѕР±Рѕ Р±РѕР»СЊС€РёС… РєРѕР»РёС‡РµСЃС‚РІР°С…(СЏС‰РёРєРё РІ Р°РІС‚Рѕ) Р»РёС†Р°РјРё, РЅРµ СЃРѕСЃС‚РѕСЏС‰РёРјРё РЅР° СЃР»СѓР¶Р±Рµ РІ РњРёРЅРёСЃС‚РµСЂСЃС‚РІРµ РћР±РѕСЂРѕРЅС‹, РїСЂРµСЃС‚СѓРїРЅРёРєСѓ 
+РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 4-Р№ СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°
+OСЃС‚Р°РЅРѕРІРєР° С‚СЂР°РЅСЃРїРѕСЂС‚РЅРѕРіРѕ СЃСЂРµРґСЃС‚РІР° РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСЂРѕРёР·РІРµРґРµРЅР° Р»РёС€СЊ РїРѕ РїСЂРёС‡РёРЅРµ РЅР°СЂСѓС€РµРЅРёСЏ РґСЂСѓРіРѕР№ СЃС‚Р°С‚СЊРё, РїРѕ Р Рџ РЅРµР»СЊР·СЏ РѕРїСЂРµРґРµР»РёС‚СЊ РµСЃС‚СЊ РІ РјР°С€РёРЅРµ РїР°С‚СЂРѕРЅС‹ РёР»Рё РЅРµС‚.]])
+imgui.Text(u8[[[4] - РџСЂРµСЃС‚СѓРїР»РµРЅРёСЏ РїСЂРѕС‚РёРІ РіРѕСЃСѓРґР°СЂСЃС‚РІРµРЅРЅРѕРіРѕ СЂРµР¶РёРјР° РёР»Рё РёРјСѓС‰РµСЃС‚РІР°.
 
-4.1 - За планирование, организацию, или соучастие в несанкционированных митингах либо бунтах, гражданину присваивается 2-ый уровень розыска.
-4.2 - За срыв одобренного мероприятия, помеха проведению одобренного мероприятия, гражданину присваивается 1-й уровень розыска
-4.3 - За шпионаж, продажу, разглашение государственной информации, преступнику присваивается 6-ой уровень розыск/
-4.4 - За передачу информации государственной важности представителям организованных преступных групировок нарушителю присваивается 6-й уровень розыска
-4.5 - За Планирование или реализация действий, которые могут быть расценены как государственная измена, нарушитель объявляется в 6 уровень розыска, 
-лишается всех лицензий, попадает в ЧС своей организации высшей категории без права выхода. Помимо этого нарушитель попадает в список Предателей Штата, 
-о чём будет оповещено в государственные новости. 
-4.6 - За порчу государственного имущества(Машин,столбов,дверей,деревьев,лавок и тд) преступнику присваивается 1 уровень розыска и выписывается штраф в 
-размере 2.000$
-4.7 - За дачу взятки за продвижение по карьерной лестнице группе лиц присваивается 6 уровень розыска и послудующее занесение в черный список организации.
+4.1 - Р—Р° РїР»Р°РЅРёСЂРѕРІР°РЅРёРµ, РѕСЂРіР°РЅРёР·Р°С†РёСЋ, РёР»Рё СЃРѕСѓС‡Р°СЃС‚РёРµ РІ РЅРµСЃР°РЅРєС†РёРѕРЅРёСЂРѕРІР°РЅРЅС‹С… РјРёС‚РёРЅРіР°С… Р»РёР±Рѕ Р±СѓРЅС‚Р°С…, РіСЂР°Р¶РґР°РЅРёРЅСѓ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 2-С‹Р№ СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.
+4.2 - Р—Р° СЃСЂС‹РІ РѕРґРѕР±СЂРµРЅРЅРѕРіРѕ РјРµСЂРѕРїСЂРёСЏС‚РёСЏ, РїРѕРјРµС…Р° РїСЂРѕРІРµРґРµРЅРёСЋ РѕРґРѕР±СЂРµРЅРЅРѕРіРѕ РјРµСЂРѕРїСЂРёСЏС‚РёСЏ, РіСЂР°Р¶РґР°РЅРёРЅСѓ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 1-Р№ СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°
+4.3 - Р—Р° С€РїРёРѕРЅР°Р¶, РїСЂРѕРґР°Р¶Сѓ, СЂР°Р·РіР»Р°С€РµРЅРёРµ РіРѕСЃСѓРґР°СЂСЃС‚РІРµРЅРЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё, РїСЂРµСЃС‚СѓРїРЅРёРєСѓ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 6-РѕР№ СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРє/
+4.4 - Р—Р° РїРµСЂРµРґР°С‡Сѓ РёРЅС„РѕСЂРјР°С†РёРё РіРѕСЃСѓРґР°СЂСЃС‚РІРµРЅРЅРѕР№ РІР°Р¶РЅРѕСЃС‚Рё РїСЂРµРґСЃС‚Р°РІРёС‚РµР»СЏРј РѕСЂРіР°РЅРёР·РѕРІР°РЅРЅС‹С… РїСЂРµСЃС‚СѓРїРЅС‹С… РіСЂСѓРїРёСЂРѕРІРѕРє РЅР°СЂСѓС€РёС‚РµР»СЋ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 6-Р№ СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°
+4.5 - Р—Р° РџР»Р°РЅРёСЂРѕРІР°РЅРёРµ РёР»Рё СЂРµР°Р»РёР·Р°С†РёСЏ РґРµР№СЃС‚РІРёР№, РєРѕС‚РѕСЂС‹Рµ РјРѕРіСѓС‚ Р±С‹С‚СЊ СЂР°СЃС†РµРЅРµРЅС‹ РєР°Рє РіРѕСЃСѓРґР°СЂСЃС‚РІРµРЅРЅР°СЏ РёР·РјРµРЅР°, РЅР°СЂСѓС€РёС‚РµР»СЊ РѕР±СЉСЏРІР»СЏРµС‚СЃСЏ РІ 6 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°, 
+Р»РёС€Р°РµС‚СЃСЏ РІСЃРµС… Р»РёС†РµРЅР·РёР№, РїРѕРїР°РґР°РµС‚ РІ Р§РЎ СЃРІРѕРµР№ РѕСЂРіР°РЅРёР·Р°С†РёРё РІС‹СЃС€РµР№ РєР°С‚РµРіРѕСЂРёРё Р±РµР· РїСЂР°РІР° РІС‹С…РѕРґР°. РџРѕРјРёРјРѕ СЌС‚РѕРіРѕ РЅР°СЂСѓС€РёС‚РµР»СЊ РїРѕРїР°РґР°РµС‚ РІ СЃРїРёСЃРѕРє РџСЂРµРґР°С‚РµР»РµР№ РЁС‚Р°С‚Р°, 
+Рѕ С‡С‘Рј Р±СѓРґРµС‚ РѕРїРѕРІРµС‰РµРЅРѕ РІ РіРѕСЃСѓРґР°СЂСЃС‚РІРµРЅРЅС‹Рµ РЅРѕРІРѕСЃС‚Рё. 
+4.6 - Р—Р° РїРѕСЂС‡Сѓ РіРѕСЃСѓРґР°СЂСЃС‚РІРµРЅРЅРѕРіРѕ РёРјСѓС‰РµСЃС‚РІР°(РњР°С€РёРЅ,СЃС‚РѕР»Р±РѕРІ,РґРІРµСЂРµР№,РґРµСЂРµРІСЊРµРІ,Р»Р°РІРѕРє Рё С‚Рґ) РїСЂРµСЃС‚СѓРїРЅРёРєСѓ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 1 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР° Рё РІС‹РїРёСЃС‹РІР°РµС‚СЃСЏ С€С‚СЂР°С„ РІ 
+СЂР°Р·РјРµСЂРµ 2.000$
+4.7 - Р—Р° РґР°С‡Сѓ РІР·СЏС‚РєРё Р·Р° РїСЂРѕРґРІРёР¶РµРЅРёРµ РїРѕ РєР°СЂСЊРµСЂРЅРѕР№ Р»РµСЃС‚РЅРёС†Рµ РіСЂСѓРїРїРµ Р»РёС† РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 6 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР° Рё РїРѕСЃР»СѓРґСѓСЋС‰РµРµ Р·Р°РЅРµСЃРµРЅРёРµ РІ С‡РµСЂРЅС‹Р№ СЃРїРёСЃРѕРє РѕСЂРіР°РЅРёР·Р°С†РёРё.
 ]])
-imgui.Text(u8[[[5] - Мелкие правонарушения. Преступления против общественной нравственности.
+imgui.Text(u8[[[5] - РњРµР»РєРёРµ РїСЂР°РІРѕРЅР°СЂСѓС€РµРЅРёСЏ. РџСЂРµСЃС‚СѓРїР»РµРЅРёСЏ РїСЂРѕС‚РёРІ РѕР±С‰РµСЃС‚РІРµРЅРЅРѕР№ РЅСЂР°РІСЃС‚РІРµРЅРЅРѕСЃС‚Рё.
 
-5.1 - При отказе предоствить документы если того требует следствие или же утере документов нарушителю присваивается 1 уровень розыска и штраф в размере 1.000$
-5.2 - За отказ или невозможность оплаты штрафа преступнику присваивается 1 уровень розыска.
-5.3 - За использование бранных слов нарушителю присваивается штраф в размере 1.500$
-5.4 - За осуществление/попытку осуществления интимных услуг, пособничество проституции нарушителю присваивается 2 уровень розыска.
-5.5 - За выполнение опасных трюков на велосипеде, которые могут повлечь за собой травмы окружающих нарушителю присваивается 1 у.р. 
-(пояснение: прыжки через людей или на людей)
-5.6 - За попрашайничество в любом виде нарушителю присваивается 1 уровень розыска.
-5.7 - За проявление национализма либо расизма, преступнику присваивается 3-ий уровень розыска.
-5.8 - За организацию или участие в мероприятиях, призывающих к национализму либо расизму независимо от того, одобрено ли оно правительством, преступнику 
-присваивается 5-й уровень розыска.
-5.9 - За ложный вызов нарушителю присваивается 1 уровень розыска или же штраф в размере 2000$.
-5.10 - За порчу личного имущества или проникновение на личную территорию(дом) любого гражданина нарушителю присваивается 1 уровень розыска.
-5.11 - Проникновение за оцепление во время теракта, нарушителю присваивается 1-й уровень розыска (не относиться к работниками СМИ и МЗ, выполняющим 
-свои обязанности]])
-	imgui.Text(u8[[[6] - Организационная преступная деятельность.
+5.1 - РџСЂРё РѕС‚РєР°Р·Рµ РїСЂРµРґРѕСЃС‚РІРёС‚СЊ РґРѕРєСѓРјРµРЅС‚С‹ РµСЃР»Рё С‚РѕРіРѕ С‚СЂРµР±СѓРµС‚ СЃР»РµРґСЃС‚РІРёРµ РёР»Рё Р¶Рµ СѓС‚РµСЂРµ РґРѕРєСѓРјРµРЅС‚РѕРІ РЅР°СЂСѓС€РёС‚РµР»СЋ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 1 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР° Рё С€С‚СЂР°С„ РІ СЂР°Р·РјРµСЂРµ 1.000$
+5.2 - Р—Р° РѕС‚РєР°Р· РёР»Рё РЅРµРІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РѕРїР»Р°С‚С‹ С€С‚СЂР°С„Р° РїСЂРµСЃС‚СѓРїРЅРёРєСѓ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 1 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.
+5.3 - Р—Р° РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ Р±СЂР°РЅРЅС‹С… СЃР»РѕРІ РЅР°СЂСѓС€РёС‚РµР»СЋ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ С€С‚СЂР°С„ РІ СЂР°Р·РјРµСЂРµ 1.500$
+5.4 - Р—Р° РѕСЃСѓС‰РµСЃС‚РІР»РµРЅРёРµ/РїРѕРїС‹С‚РєСѓ РѕСЃСѓС‰РµСЃС‚РІР»РµРЅРёСЏ РёРЅС‚РёРјРЅС‹С… СѓСЃР»СѓРі, РїРѕСЃРѕР±РЅРёС‡РµСЃС‚РІРѕ РїСЂРѕСЃС‚РёС‚СѓС†РёРё РЅР°СЂСѓС€РёС‚РµР»СЋ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 2 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.
+5.5 - Р—Р° РІС‹РїРѕР»РЅРµРЅРёРµ РѕРїР°СЃРЅС‹С… С‚СЂСЋРєРѕРІ РЅР° РІРµР»РѕСЃРёРїРµРґРµ, РєРѕС‚РѕСЂС‹Рµ РјРѕРіСѓС‚ РїРѕРІР»РµС‡СЊ Р·Р° СЃРѕР±РѕР№ С‚СЂР°РІРјС‹ РѕРєСЂСѓР¶Р°СЋС‰РёС… РЅР°СЂСѓС€РёС‚РµР»СЋ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 1 Сѓ.СЂ. 
+(РїРѕСЏСЃРЅРµРЅРёРµ: РїСЂС‹Р¶РєРё С‡РµСЂРµР· Р»СЋРґРµР№ РёР»Рё РЅР° Р»СЋРґРµР№)
+5.6 - Р—Р° РїРѕРїСЂР°С€Р°Р№РЅРёС‡РµСЃС‚РІРѕ РІ Р»СЋР±РѕРј РІРёРґРµ РЅР°СЂСѓС€РёС‚РµР»СЋ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 1 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.
+5.7 - Р—Р° РїСЂРѕСЏРІР»РµРЅРёРµ РЅР°С†РёРѕРЅР°Р»РёР·РјР° Р»РёР±Рѕ СЂР°СЃРёР·РјР°, РїСЂРµСЃС‚СѓРїРЅРёРєСѓ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 3-РёР№ СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.
+5.8 - Р—Р° РѕСЂРіР°РЅРёР·Р°С†РёСЋ РёР»Рё СѓС‡Р°СЃС‚РёРµ РІ РјРµСЂРѕРїСЂРёСЏС‚РёСЏС…, РїСЂРёР·С‹РІР°СЋС‰РёС… Рє РЅР°С†РёРѕРЅР°Р»РёР·РјСѓ Р»РёР±Рѕ СЂР°СЃРёР·РјСѓ РЅРµР·Р°РІРёСЃРёРјРѕ РѕС‚ С‚РѕРіРѕ, РѕРґРѕР±СЂРµРЅРѕ Р»Рё РѕРЅРѕ РїСЂР°РІРёС‚РµР»СЊСЃС‚РІРѕРј, РїСЂРµСЃС‚СѓРїРЅРёРєСѓ 
+РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 5-Р№ СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.
+5.9 - Р—Р° Р»РѕР¶РЅС‹Р№ РІС‹Р·РѕРІ РЅР°СЂСѓС€РёС‚РµР»СЋ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 1 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР° РёР»Рё Р¶Рµ С€С‚СЂР°С„ РІ СЂР°Р·РјРµСЂРµ 2000$.
+5.10 - Р—Р° РїРѕСЂС‡Сѓ Р»РёС‡РЅРѕРіРѕ РёРјСѓС‰РµСЃС‚РІР° РёР»Рё РїСЂРѕРЅРёРєРЅРѕРІРµРЅРёРµ РЅР° Р»РёС‡РЅСѓСЋ С‚РµСЂСЂРёС‚РѕСЂРёСЋ(РґРѕРј) Р»СЋР±РѕРіРѕ РіСЂР°Р¶РґР°РЅРёРЅР° РЅР°СЂСѓС€РёС‚РµР»СЋ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 1 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.
+5.11 - РџСЂРѕРЅРёРєРЅРѕРІРµРЅРёРµ Р·Р° РѕС†РµРїР»РµРЅРёРµ РІРѕ РІСЂРµРјСЏ С‚РµСЂР°РєС‚Р°, РЅР°СЂСѓС€РёС‚РµР»СЋ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 1-Р№ СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР° (РЅРµ РѕС‚РЅРѕСЃРёС‚СЊСЃСЏ Рє СЂР°Р±РѕС‚РЅРёРєР°РјРё РЎРњР Рё РњР—, РІС‹РїРѕР»РЅСЏСЋС‰РёРј 
+СЃРІРѕРё РѕР±СЏР·Р°РЅРЅРѕСЃС‚Рё]])
+	imgui.Text(u8[[[6] - РћСЂРіР°РЅРёР·Р°С†РёРѕРЅРЅР°СЏ РїСЂРµСЃС‚СѓРїРЅР°СЏ РґРµСЏС‚РµР»СЊРЅРѕСЃС‚СЊ.
 
-6.1 - За похищение/попытку похитить одного или группу лиц преступникам присваивается 6 уровень розыска.
-6.2 - За планирование или организацию теракта преступнику/группе лиц присваивается 6 уровень розыска.
-6.3 - За продажу/распространение/кражу служебной формы(например: форму МО или МВД) преступнику или группе лиц присваивается 3 уровень розыска.
-6.4 - За подделку документов, удостоверений, значков государственных организаций, а равно их покупка, продажа и применение в личных целях наказывается 
-4-ый уровнями розыска.
-6.5 - За работу в организации чья деятельность путем расследования и последующего допроса исполнителей преступлений доказана агент ФБР(5+ ранг) имеет право 
-присвоить 4 уровень розыска.
-6.6 - За дачу заведомо ложной информации о теракте или похищении преступнику присваивается 2 уровень розыска.]])
-	imgui.Text(u8[[[7] - Нарушения правил дорожного движения.
+6.1 - Р—Р° РїРѕС…РёС‰РµРЅРёРµ/РїРѕРїС‹С‚РєСѓ РїРѕС…РёС‚РёС‚СЊ РѕРґРЅРѕРіРѕ РёР»Рё РіСЂСѓРїРїСѓ Р»РёС† РїСЂРµСЃС‚СѓРїРЅРёРєР°Рј РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 6 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.
+6.2 - Р—Р° РїР»Р°РЅРёСЂРѕРІР°РЅРёРµ РёР»Рё РѕСЂРіР°РЅРёР·Р°С†РёСЋ С‚РµСЂР°РєС‚Р° РїСЂРµСЃС‚СѓРїРЅРёРєСѓ/РіСЂСѓРїРїРµ Р»РёС† РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 6 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.
+6.3 - Р—Р° РїСЂРѕРґР°Р¶Сѓ/СЂР°СЃРїСЂРѕСЃС‚СЂР°РЅРµРЅРёРµ/РєСЂР°Р¶Сѓ СЃР»СѓР¶РµР±РЅРѕР№ С„РѕСЂРјС‹(РЅР°РїСЂРёРјРµСЂ: С„РѕСЂРјСѓ РњРћ РёР»Рё РњР’Р”) РїСЂРµСЃС‚СѓРїРЅРёРєСѓ РёР»Рё РіСЂСѓРїРїРµ Р»РёС† РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 3 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.
+6.4 - Р—Р° РїРѕРґРґРµР»РєСѓ РґРѕРєСѓРјРµРЅС‚РѕРІ, СѓРґРѕСЃС‚РѕРІРµСЂРµРЅРёР№, Р·РЅР°С‡РєРѕРІ РіРѕСЃСѓРґР°СЂСЃС‚РІРµРЅРЅС‹С… РѕСЂРіР°РЅРёР·Р°С†РёР№, Р° СЂР°РІРЅРѕ РёС… РїРѕРєСѓРїРєР°, РїСЂРѕРґР°Р¶Р° Рё РїСЂРёРјРµРЅРµРЅРёРµ РІ Р»РёС‡РЅС‹С… С†РµР»СЏС… РЅР°РєР°Р·С‹РІР°РµС‚СЃСЏ 
+4-С‹Р№ СѓСЂРѕРІРЅСЏРјРё СЂРѕР·С‹СЃРєР°.
+6.5 - Р—Р° СЂР°Р±РѕС‚Сѓ РІ РѕСЂРіР°РЅРёР·Р°С†РёРё С‡СЊСЏ РґРµСЏС‚РµР»СЊРЅРѕСЃС‚СЊ РїСѓС‚РµРј СЂР°СЃСЃР»РµРґРѕРІР°РЅРёСЏ Рё РїРѕСЃР»РµРґСѓСЋС‰РµРіРѕ РґРѕРїСЂРѕСЃР° РёСЃРїРѕР»РЅРёС‚РµР»РµР№ РїСЂРµСЃС‚СѓРїР»РµРЅРёР№ РґРѕРєР°Р·Р°РЅР° Р°РіРµРЅС‚ Р¤Р‘Р (5+ СЂР°РЅРі) РёРјРµРµС‚ РїСЂР°РІРѕ 
+РїСЂРёСЃРІРѕРёС‚СЊ 4 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.
+6.6 - Р—Р° РґР°С‡Сѓ Р·Р°РІРµРґРѕРјРѕ Р»РѕР¶РЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё Рѕ С‚РµСЂР°РєС‚Рµ РёР»Рё РїРѕС…РёС‰РµРЅРёРё РїСЂРµСЃС‚СѓРїРЅРёРєСѓ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 2 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.]])
+	imgui.Text(u8[[[7] - РќР°СЂСѓС€РµРЅРёСЏ РїСЂР°РІРёР» РґРѕСЂРѕР¶РЅРѕРіРѕ РґРІРёР¶РµРЅРёСЏ.
 
-7.1 - Езда по встречной полосе. Нарушителю выписывается штраф в размере 2.000$, изымается водительское удостоверение и присваивается 1 уровень розыска.
-7.2 - Наезд на пешехода с причинением каких-либо телесных поврежденийй. Нарушителю выписывается штраф в размере 2.000$, присваивается 2 уровень розыска и изъятие вод.уд.
-7.3 - Парковка в неположенном месте. Нарушителю выписывается штраф в размере 2.000$ и изымается водительское удостоверение.
-7.4 - Игнорирование звуковых (сирен) и/или визуальных сигналов (проблесковых маячков) специальных служб. Нарушителю выписывается штраф в размере 2.000$.
-7.5 - Уезд с места ДТП. Нарушителю выписывается штраф в размере 1.000$, изымается водительское удостоверение и присваивается 1 уровень розыска.
-7.6 - Умышленное создание аварийной ситуации. Нарушителю выписывается штраф в размере 2.000$, изымается водительское удостоверение и присваивается 2 уровень розыска.
-7.7 - Помеха работе правоохранительных органов на транспортном средстве ( подрезание , врезание в машину мвд специально и т.д ).У нарушителя изымается водительское 
-удостоверение и присваивается 2 уровень розыска.
-7.8 - Езда с выключенными фарами в темное время суток(после 19:30) нарушителю выписывается штраф в размере 500$
-7.9 - Участие/организация несанкционированных уличных гонок. Нарушителям выписывается штраф в размере 2.000$
-7.10 - За парковку воздушного транспорта вне специально отведенного места нарушителю выписывается штраф в размере 1.500$ и изымается удостоверение на управление 
-воздушным транспортом.
-7.11 - За использование служебного / общественного транспорта в личных целях, без установленного тарифа. Нарушителю выписывается штраф в размере 1000$.]])
-	imgui.Text(u8[[[8] - Поведение в месте отбывания наказания.
+7.1 - Р•Р·РґР° РїРѕ РІСЃС‚СЂРµС‡РЅРѕР№ РїРѕР»РѕСЃРµ. РќР°СЂСѓС€РёС‚РµР»СЋ РІС‹РїРёСЃС‹РІР°РµС‚СЃСЏ С€С‚СЂР°С„ РІ СЂР°Р·РјРµСЂРµ 2.000$, РёР·С‹РјР°РµС‚СЃСЏ РІРѕРґРёС‚РµР»СЊСЃРєРѕРµ СѓРґРѕСЃС‚РѕРІРµСЂРµРЅРёРµ Рё РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 1 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.
+7.2 - РќР°РµР·Рґ РЅР° РїРµС€РµС…РѕРґР° СЃ РїСЂРёС‡РёРЅРµРЅРёРµРј РєР°РєРёС…-Р»РёР±Рѕ С‚РµР»РµСЃРЅС‹С… РїРѕРІСЂРµР¶РґРµРЅРёР№Р№. РќР°СЂСѓС€РёС‚РµР»СЋ РІС‹РїРёСЃС‹РІР°РµС‚СЃСЏ С€С‚СЂР°С„ РІ СЂР°Р·РјРµСЂРµ 2.000$, РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 2 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР° Рё РёР·СЉСЏС‚РёРµ РІРѕРґ.СѓРґ.
+7.3 - РџР°СЂРєРѕРІРєР° РІ РЅРµРїРѕР»РѕР¶РµРЅРЅРѕРј РјРµСЃС‚Рµ. РќР°СЂСѓС€РёС‚РµР»СЋ РІС‹РїРёСЃС‹РІР°РµС‚СЃСЏ С€С‚СЂР°С„ РІ СЂР°Р·РјРµСЂРµ 2.000$ Рё РёР·С‹РјР°РµС‚СЃСЏ РІРѕРґРёС‚РµР»СЊСЃРєРѕРµ СѓРґРѕСЃС‚РѕРІРµСЂРµРЅРёРµ.
+7.4 - РРіРЅРѕСЂРёСЂРѕРІР°РЅРёРµ Р·РІСѓРєРѕРІС‹С… (СЃРёСЂРµРЅ) Рё/РёР»Рё РІРёР·СѓР°Р»СЊРЅС‹С… СЃРёРіРЅР°Р»РѕРІ (РїСЂРѕР±Р»РµСЃРєРѕРІС‹С… РјР°СЏС‡РєРѕРІ) СЃРїРµС†РёР°Р»СЊРЅС‹С… СЃР»СѓР¶Р±. РќР°СЂСѓС€РёС‚РµР»СЋ РІС‹РїРёСЃС‹РІР°РµС‚СЃСЏ С€С‚СЂР°С„ РІ СЂР°Р·РјРµСЂРµ 2.000$.
+7.5 - РЈРµР·Рґ СЃ РјРµСЃС‚Р° Р”РўРџ. РќР°СЂСѓС€РёС‚РµР»СЋ РІС‹РїРёСЃС‹РІР°РµС‚СЃСЏ С€С‚СЂР°С„ РІ СЂР°Р·РјРµСЂРµ 1.000$, РёР·С‹РјР°РµС‚СЃСЏ РІРѕРґРёС‚РµР»СЊСЃРєРѕРµ СѓРґРѕСЃС‚РѕРІРµСЂРµРЅРёРµ Рё РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 1 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.
+7.6 - РЈРјС‹С€Р»РµРЅРЅРѕРµ СЃРѕР·РґР°РЅРёРµ Р°РІР°СЂРёР№РЅРѕР№ СЃРёС‚СѓР°С†РёРё. РќР°СЂСѓС€РёС‚РµР»СЋ РІС‹РїРёСЃС‹РІР°РµС‚СЃСЏ С€С‚СЂР°С„ РІ СЂР°Р·РјРµСЂРµ 2.000$, РёР·С‹РјР°РµС‚СЃСЏ РІРѕРґРёС‚РµР»СЊСЃРєРѕРµ СѓРґРѕСЃС‚РѕРІРµСЂРµРЅРёРµ Рё РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 2 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.
+7.7 - РџРѕРјРµС…Р° СЂР°Р±РѕС‚Рµ РїСЂР°РІРѕРѕС…СЂР°РЅРёС‚РµР»СЊРЅС‹С… РѕСЂРіР°РЅРѕРІ РЅР° С‚СЂР°РЅСЃРїРѕСЂС‚РЅРѕРј СЃСЂРµРґСЃС‚РІРµ ( РїРѕРґСЂРµР·Р°РЅРёРµ , РІСЂРµР·Р°РЅРёРµ РІ РјР°С€РёРЅСѓ РјРІРґ СЃРїРµС†РёР°Р»СЊРЅРѕ Рё С‚.Рґ ).РЈ РЅР°СЂСѓС€РёС‚РµР»СЏ РёР·С‹РјР°РµС‚СЃСЏ РІРѕРґРёС‚РµР»СЊСЃРєРѕРµ 
+СѓРґРѕСЃС‚РѕРІРµСЂРµРЅРёРµ Рё РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ 2 СѓСЂРѕРІРµРЅСЊ СЂРѕР·С‹СЃРєР°.
+7.8 - Р•Р·РґР° СЃ РІС‹РєР»СЋС‡РµРЅРЅС‹РјРё С„Р°СЂР°РјРё РІ С‚РµРјРЅРѕРµ РІСЂРµРјСЏ СЃСѓС‚РѕРє(РїРѕСЃР»Рµ 19:30) РЅР°СЂСѓС€РёС‚РµР»СЋ РІС‹РїРёСЃС‹РІР°РµС‚СЃСЏ С€С‚СЂР°С„ РІ СЂР°Р·РјРµСЂРµ 500$
+7.9 - РЈС‡Р°СЃС‚РёРµ/РѕСЂРіР°РЅРёР·Р°С†РёСЏ РЅРµСЃР°РЅРєС†РёРѕРЅРёСЂРѕРІР°РЅРЅС‹С… СѓР»РёС‡РЅС‹С… РіРѕРЅРѕРє. РќР°СЂСѓС€РёС‚РµР»СЏРј РІС‹РїРёСЃС‹РІР°РµС‚СЃСЏ С€С‚СЂР°С„ РІ СЂР°Р·РјРµСЂРµ 2.000$
+7.10 - Р—Р° РїР°СЂРєРѕРІРєСѓ РІРѕР·РґСѓС€РЅРѕРіРѕ С‚СЂР°РЅСЃРїРѕСЂС‚Р° РІРЅРµ СЃРїРµС†РёР°Р»СЊРЅРѕ РѕС‚РІРµРґРµРЅРЅРѕРіРѕ РјРµСЃС‚Р° РЅР°СЂСѓС€РёС‚РµР»СЋ РІС‹РїРёСЃС‹РІР°РµС‚СЃСЏ С€С‚СЂР°С„ РІ СЂР°Р·РјРµСЂРµ 1.500$ Рё РёР·С‹РјР°РµС‚СЃСЏ СѓРґРѕСЃС‚РѕРІРµСЂРµРЅРёРµ РЅР° СѓРїСЂР°РІР»РµРЅРёРµ 
+РІРѕР·РґСѓС€РЅС‹Рј С‚СЂР°РЅСЃРїРѕСЂС‚РѕРј.
+7.11 - Р—Р° РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ СЃР»СѓР¶РµР±РЅРѕРіРѕ / РѕР±С‰РµСЃС‚РІРµРЅРЅРѕРіРѕ С‚СЂР°РЅСЃРїРѕСЂС‚Р° РІ Р»РёС‡РЅС‹С… С†РµР»СЏС…, Р±РµР· СѓСЃС‚Р°РЅРѕРІР»РµРЅРЅРѕРіРѕ С‚Р°СЂРёС„Р°. РќР°СЂСѓС€РёС‚РµР»СЋ РІС‹РїРёСЃС‹РІР°РµС‚СЃСЏ С€С‚СЂР°С„ РІ СЂР°Р·РјРµСЂРµ 1000$.]])
+	imgui.Text(u8[[[8] - РџРѕРІРµРґРµРЅРёРµ РІ РјРµСЃС‚Рµ РѕС‚Р±С‹РІР°РЅРёСЏ РЅР°РєР°Р·Р°РЅРёСЏ.
 
-8.1 - За неадекватное поведение, а именно: драка и т.п. нарушителю выписывается штраф в размере 2000$.
-8.2 - За неподчинение сотрудников Тюрьмы, нарушителю выписывается штраф в размере 1500$.
-8.3 - За оскорбление сотрудника Тюрьмы или других заключенных, нарушителю выписывается штраф в размере 1500$.]])
+8.1 - Р—Р° РЅРµР°РґРµРєРІР°С‚РЅРѕРµ РїРѕРІРµРґРµРЅРёРµ, Р° РёРјРµРЅРЅРѕ: РґСЂР°РєР° Рё С‚.Рї. РЅР°СЂСѓС€РёС‚РµР»СЋ РІС‹РїРёСЃС‹РІР°РµС‚СЃСЏ С€С‚СЂР°С„ РІ СЂР°Р·РјРµСЂРµ 2000$.
+8.2 - Р—Р° РЅРµРїРѕРґС‡РёРЅРµРЅРёРµ СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ РўСЋСЂСЊРјС‹, РЅР°СЂСѓС€РёС‚РµР»СЋ РІС‹РїРёСЃС‹РІР°РµС‚СЃСЏ С€С‚СЂР°С„ РІ СЂР°Р·РјРµСЂРµ 1500$.
+8.3 - Р—Р° РѕСЃРєРѕСЂР±Р»РµРЅРёРµ СЃРѕС‚СЂСѓРґРЅРёРєР° РўСЋСЂСЊРјС‹ РёР»Рё РґСЂСѓРіРёС… Р·Р°РєР»СЋС‡РµРЅРЅС‹С…, РЅР°СЂСѓС€РёС‚РµР»СЋ РІС‹РїРёСЃС‹РІР°РµС‚СЃСЏ С€С‚СЂР°С„ РІ СЂР°Р·РјРµСЂРµ 1500$.]])
 
 	imgui.End()
 	end
@@ -973,7 +975,31 @@ function main()
     while not isSampAvailable() do
         wait(0)
 	end
-	update()
+	--[[local fpath = os.getenv('TEMP') .. '\\mvdheplvetsion.json'
+	print (fpath)
+    downloadUrlToFile('https://github.com/MateoPenaloza/leader_mvd/blob/master/mvdheplvetsion.json', fpath, function(id, status, p1, p2)
+        if status == dlstatus.STATUS_ENDDOWNLOADDATA then
+        local f = io.open(fpath, 'r')
+        if f then
+            local info = decodeJson(f:read('*a'))
+            updatelink = info.updateurl
+            if info and latest then
+                version = tonumber(latest)
+                if version > tonumber(thisScript().version) then
+                    lua_thread.create(goupdate)
+                else
+                    update = false
+                end
+            end
+        end
+    end
+	end)]]
+	local dlstatus = require('moonloader').download_status
+	downloadUrlToFile("https://github.com/MateoPenaloza/leader_mvd/blob/master/testmv.lua", thisScript().path, function(id, status)
+	if status == dlstatus.STATUS_ENDDOWNLOADDATA then
+    thisScript():reload()
+	end
+	end)
 	local time = getTime(3)
 	dat = os.date('%d', time)
 	mat = os.date('%m', time)
@@ -981,9 +1007,9 @@ function main()
 	local _,  playerid = sampGetPlayerIdByCharHandle(PLAYER_PED)
 	if sampGetPlayerNickname(playerid) == 'Mateo_Penaloza' then
 		if dat <= '31' and mat <= '08' and yea <= '2018' then
-			sampAddChatMessage("[Leader-MVD] {FFFFFF} Скрипт запущен.{9d00bd} Автор: Mateo Penaloza. {4b58eb} | Version: 1.2 beta", 0x4b58ebFF)
-			sampAddChatMessage("[Leader-MVD] {FFFFFF} Используйте команду /lm или клавишу F2 для вызова меню.", 0x4b58ebFF)
-			--sampAddChatMessage("[Leader-MVD] {FFFFFF} Скрипт доступен только для лидеров. Пропишите команду {4b58eb}/lm{ffffff} для регистрации.", 0x4b58ebFF)
+			sampAddChatMessage("[Leader-MVD] {FFFFFF} РЎРєСЂРёРїС‚ Р·Р°РїСѓС‰РµРЅ.{9d00bd} РђРІС‚РѕСЂ: Mateo Penaloza. {4b58eb} | Version: 1.3 beta", 0x4b58ebFF)
+			sampAddChatMessage("[Leader-MVD] {FFFFFF} РСЃРїРѕР»СЊР·СѓР№С‚Рµ РєРѕРјР°РЅРґСѓ /lm РёР»Рё РєР»Р°РІРёС€Сѓ F2 РґР»СЏ РІС‹Р·РѕРІР° РјРµРЅСЋ.", 0x4b58ebFF)
+			--sampAddChatMessage("[Leader-MVD] {FFFFFF} РЎРєСЂРёРїС‚ РґРѕСЃС‚СѓРїРµРЅ С‚РѕР»СЊРєРѕ РґР»СЏ Р»РёРґРµСЂРѕРІ. РџСЂРѕРїРёС€РёС‚Рµ РєРѕРјР°РЅРґСѓ {4b58eb}/lm{ffffff} РґР»СЏ СЂРµРіРёСЃС‚СЂР°С†РёРё.", 0x4b58ebFF)
 			sampRegisterChatCommand("lm", lm) -- +
 			sampRegisterChatCommand("cuff", cuff) -- +
 			sampRegisterChatCommand("arrest", arrest) -- +
@@ -1000,8 +1026,8 @@ function main()
 			sampRegisterChatCommand("changeskin", changeskin) -- +
 			sampRegisterChatCommand("fn", fn) -- +
 			sampRegisterChatCommand("rn", rn) -- +
-			sampRegisterChatCommand("епк", ud) -- +
-			sampRegisterChatCommand("уд", udos) -- +
+			sampRegisterChatCommand("РµРїРє", ud) -- +
+			sampRegisterChatCommand("СѓРґ", udos) -- +
 			while true do
 			wait(0)
 			if isKeyJustPressed(key.VK_F2) then 
@@ -1014,25 +1040,25 @@ function main()
 			imgui.Process = main_menu.v  
 			if save_rpw.v then
 					local weapon = getCurrentCharWeapon(PLAYER_PED)
-							if weapon == 3 then -- дубинка
-								sampSendChat("/do Дубинка висит на поясе.")
+							if weapon == 3 then -- РґСѓР±РёРЅРєР°
+								sampSendChat("/do Р”СѓР±РёРЅРєР° РІРёСЃРёС‚ РЅР° РїРѕСЏСЃРµ.")
 								wait(1000)
-								sampSendChat("/me снял дубинку с пояса")
+								sampSendChat("/me СЃРЅСЏР» РґСѓР±РёРЅРєСѓ СЃ РїРѕСЏСЃР°")
 								while true and save_rpw.v == true do
 								wait(0)
 								imgui.Process = main_menu.v
 								local weapon = getCurrentCharWeapon(PLAYER_PED)
 									if weapon ~= 3 then
-										sampSendChat("/me повесил дубинку на пояс")
+										sampSendChat("/me РїРѕРІРµСЃРёР» РґСѓР±РёРЅРєСѓ РЅР° РїРѕСЏСЃ")
 										wait(1000)
 										break
 									end
 								end
 								---------------------------------
-							elseif weapon == 17 then -- Дымовая шашка
-								sampSendChat("/do Дымовая шашка в чехле на поясе.")
+							elseif weapon == 17 then -- Р”С‹РјРѕРІР°СЏ С€Р°С€РєР°
+								sampSendChat("/do Р”С‹РјРѕРІР°СЏ С€Р°С€РєР° РІ С‡РµС…Р»Рµ РЅР° РїРѕСЏСЃРµ.")
 								wait(1000)
-								sampSendChat("/me вытащил дымовую шашку")
+								sampSendChat("/me РІС‹С‚Р°С‰РёР» РґС‹РјРѕРІСѓСЋ С€Р°С€РєСѓ")
 									while true and save_rpw.v do
 									wait(0)
 									imgui.Process = main_menu.v
@@ -1042,82 +1068,82 @@ function main()
 										end
 									end
 									---------------------------------
-							elseif weapon == 23 then -- Пистол
-								sampSendChat("/do В кобуре пистолет SD-Pistol")
+							elseif weapon == 23 then -- РџРёСЃС‚РѕР»
+								sampSendChat("/do Р’ РєРѕР±СѓСЂРµ РїРёСЃС‚РѕР»РµС‚ SD-Pistol")
 								wait(1000)
-								sampSendChat("/me достал пистолет из кобуры")
+								sampSendChat("/me РґРѕСЃС‚Р°Р» РїРёСЃС‚РѕР»РµС‚ РёР· РєРѕР±СѓСЂС‹")
 								while true and save_rpw.v do
 								wait(0)
 								imgui.Process = main_menu.v
 								local weapon = getCurrentCharWeapon(PLAYER_PED)
 									if weapon ~= 23 then
-										sampSendChat("/do Кобура на поясе.")
+										sampSendChat("/do РљРѕР±СѓСЂР° РЅР° РїРѕСЏСЃРµ.")
 										wait(1000)
-										sampSendChat("/me засунул пистолет в кобуру")
+										sampSendChat("/me Р·Р°СЃСѓРЅСѓР» РїРёСЃС‚РѕР»РµС‚ РІ РєРѕР±СѓСЂСѓ")
 										wait(1000)
 										break
 									end
 								end
 								---------------------------------
-							elseif weapon == 24 then -- Дигл
-								sampSendChat("/do В кобуре пистолет Desert Eagle .")
+							elseif weapon == 24 then -- Р”РёРіР»
+								sampSendChat("/do Р’ РєРѕР±СѓСЂРµ РїРёСЃС‚РѕР»РµС‚ Desert Eagle .")
 								wait(1000)
-								sampSendChat("/me достал пистолет из кобуры")
+								sampSendChat("/me РґРѕСЃС‚Р°Р» РїРёСЃС‚РѕР»РµС‚ РёР· РєРѕР±СѓСЂС‹")
 								while true and save_rpw.v do
 								wait(0)
 								imgui.Process = main_menu.v
 								local weapon = getCurrentCharWeapon(PLAYER_PED)
 									if weapon ~= 24 then
-										sampSendChat("/do Кобура на поясе.")
+										sampSendChat("/do РљРѕР±СѓСЂР° РЅР° РїРѕСЏСЃРµ.")
 										wait(1000)
-										sampSendChat("/me засунул пистолет в кобуру")
+										sampSendChat("/me Р·Р°СЃСѓРЅСѓР» РїРёСЃС‚РѕР»РµС‚ РІ РєРѕР±СѓСЂСѓ")
 										wait(1000)
 										break
 									end
 								end
 								---------------------------------
-							elseif weapon == 25 then -- Шотган
-								sampSendChat("/do На плече весит дробовик Shotgun.")
+							elseif weapon == 25 then -- РЁРѕС‚РіР°РЅ
+								sampSendChat("/do РќР° РїР»РµС‡Рµ РІРµСЃРёС‚ РґСЂРѕР±РѕРІРёРє Shotgun.")
 								wait(1000)
-								sampSendChat("/me снял с плеча дробовик")
+								sampSendChat("/me СЃРЅСЏР» СЃ РїР»РµС‡Р° РґСЂРѕР±РѕРІРёРє")
 								while true and save_rpw.v do
 								wait(0)
 								imgui.Process = main_menu.v
 								local weapon = getCurrentCharWeapon(PLAYER_PED)
 									if weapon ~= 25 then
-										sampSendChat("/me повесил дробовик на плечо")
+										sampSendChat("/me РїРѕРІРµСЃРёР» РґСЂРѕР±РѕРІРёРє РЅР° РїР»РµС‡Рѕ")
 										wait(1000)
 										break
 									end
 								end
 								---------------------------------
-							elseif weapon == 29 then -- МП 5
-								sampSendChat("/do На плече весит пистолет-пулемёт MP-5.")
+							elseif weapon == 29 then -- РњРџ 5
+								sampSendChat("/do РќР° РїР»РµС‡Рµ РІРµСЃРёС‚ РїРёСЃС‚РѕР»РµС‚-РїСѓР»РµРјС‘С‚ MP-5.")
 								wait(1000)
-								sampSendChat("/me снял с плеча пистолет-пулемёт")
+								sampSendChat("/me СЃРЅСЏР» СЃ РїР»РµС‡Р° РїРёСЃС‚РѕР»РµС‚-РїСѓР»РµРјС‘С‚")
 								while true and save_rpw.v do
 								wait(0)
 								imgui.Process = main_menu.v
 								local weapon = getCurrentCharWeapon(PLAYER_PED)
 									if weapon ~= 29 then
-										sampSendChat("/me повесил пистолет-пулемёт на плечо")
+										sampSendChat("/me РїРѕРІРµСЃРёР» РїРёСЃС‚РѕР»РµС‚-РїСѓР»РµРјС‘С‚ РЅР° РїР»РµС‡Рѕ")
 										wait(1000)
 										break
 									end
 								end
 								---------------------------------
-							elseif weapon == 34 then -- Снайперка
-								sampSendChat("/do  На спине снайперская винтовка.")
+							elseif weapon == 34 then -- РЎРЅР°Р№РїРµСЂРєР°
+								sampSendChat("/do  РќР° СЃРїРёРЅРµ СЃРЅР°Р№РїРµСЂСЃРєР°СЏ РІРёРЅС‚РѕРІРєР°.")
 								wait(1000)
-								sampSendChat("/me взял со спины снайперскую винтовку")
+								sampSendChat("/me РІР·СЏР» СЃРѕ СЃРїРёРЅС‹ СЃРЅР°Р№РїРµСЂСЃРєСѓСЋ РІРёРЅС‚РѕРІРєСѓ")
 								while true and save_rpw.v do
 								wait(0)
 								imgui.Process = main_menu.v
 								local weapon = getCurrentCharWeapon(PLAYER_PED)
 									if weapon ~= 34 then
-										sampSendChat("/do В руке снайперская винтовка")
+										sampSendChat("/do Р’ СЂСѓРєРµ СЃРЅР°Р№РїРµСЂСЃРєР°СЏ РІРёРЅС‚РѕРІРєР°")
 										wait(1000)
-										sampSendChat("/me повесит снайперскую винтовку на спину")
+										sampSendChat("/me РїРѕРІРµСЃРёС‚ СЃРЅР°Р№РїРµСЂСЃРєСѓСЋ РІРёРЅС‚РѕРІРєСѓ РЅР° СЃРїРёРЅСѓ")
 										wait(1000)
 										break
 									end
@@ -1127,13 +1153,13 @@ function main()
 					end
 				end
 			else
-				sampAddChatMessage("[Leader-MVD] {FFFFFF} Скрипт запущен.{9d00bd} Автор: Mateo Penaloza. {4b58eb} | Version: 1.2 beta", 0x4b58ebFF)
-				sampAddChatMessage("[Leader-MVD] {FFFFFF} У вас закончился срок использования скрипта. Обратитесь к автору: vk.com/si8646222 или Skype: danilbw", 0x4b58ebFF)
+				sampAddChatMessage("[Leader-MVD] {FFFFFF} РЎРєСЂРёРїС‚ Р·Р°РїСѓС‰РµРЅ.{9d00bd} РђРІС‚РѕСЂ: Mateo Penaloza. {4b58eb} | Version: 1.2 beta", 0x4b58ebFF)
+				sampAddChatMessage("[Leader-MVD] {FFFFFF} РЈ РІР°СЃ Р·Р°РєРѕРЅС‡РёР»СЃСЏ СЃСЂРѕРє РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ СЃРєСЂРёРїС‚Р°. РћР±СЂР°С‚РёС‚РµСЃСЊ Рє Р°РІС‚РѕСЂСѓ: vk.com/si8646222 РёР»Рё Skype: danilbw", 0x4b58ebFF)
 				thisScript():unload()
 			end
 		else
-			sampAddChatMessage("[Leader-MVD] {FFFFFF} Скрипт запущен.{9d00bd} Автор: Mateo Penaloza. {4b58eb} | Version: 1.2 beta", 0x4b58ebFF)
-			sampAddChatMessage("[Leader-MVD] {FFFFFF} У вас нет доступа к скрипту. Обратитесь к автору: vk.com/si8646222 или Skype: danilbw", 0x4b58ebFF)
+			sampAddChatMessage("[Leader-MVD] {FFFFFF} РЎРєСЂРёРїС‚ Р·Р°РїСѓС‰РµРЅ.{9d00bd} РђРІС‚РѕСЂ: Mateo Penaloza. {4b58eb} | Version: 1.2 beta", 0x4b58ebFF)
+			sampAddChatMessage("[Leader-MVD] {FFFFFF} РЈ РІР°СЃ РЅРµС‚ РґРѕСЃС‚СѓРїР° Рє СЃРєСЂРёРїС‚Сѓ. РћР±СЂР°С‚РёС‚РµСЃСЊ Рє Р°РІС‚РѕСЂСѓ: vk.com/si8646222 РёР»Рё Skype: danilbw", 0x4b58ebFF)
 			thisScript():unload()
 		end
 	end
@@ -1150,12 +1176,12 @@ function main()
 				lua_thread.create(function() wait(100)
 					dialogtext = sampGetDialogText()
 					--print(dialogtext)
-					itog = dialogtext:match('.+Игровой статус:%s(.+)')
+					itog = dialogtext:match('.+РРіСЂРѕРІРѕР№ СЃС‚Р°С‚СѓСЃ:%s(.+)')
 					sampCloseCurrentDialogWithButton(1)
-					if itog == '	Опытный игрок' then 
+					if itog == '	РћРїС‹С‚РЅС‹Р№ РёРіСЂРѕРє' then 
 						st = 1
-						sampAddChatMessage("[Leader-MVD] {FFFFFF} Используйте клавишу F2 для вызова меню.", 0x4b58ebFF)
-						else sampAddChatMessage("[Leader-MVD] {FFFFFF} Вы не лидер. Скрипт вам не доступен.", 0x4b58ebFF) end
+						sampAddChatMessage("[Leader-MVD] {FFFFFF} РСЃРїРѕР»СЊР·СѓР№С‚Рµ РєР»Р°РІРёС€Сѓ F2 РґР»СЏ РІС‹Р·РѕРІР° РјРµРЅСЋ.", 0x4b58ebFF)
+						else sampAddChatMessage("[Leader-MVD] {FFFFFF} Р’С‹ РЅРµ Р»РёРґРµСЂ. РЎРєСЂРёРїС‚ РІР°Рј РЅРµ РґРѕСЃС‚СѓРїРµРЅ.", 0x4b58ebFF) end
 					print(itog)
 					print(st)
 				end)
@@ -1168,19 +1194,19 @@ end
 
 function cuff(param)
 		local id = tonumber(param)
-			if id == nil then sampAddChatMessage("[Leader-MVD] {FFFFFF} Не ввели необходимые значения.{9d00bd} /cuff [id].", 0x4b58ebFF) else
+			if id == nil then sampAddChatMessage("[Leader-MVD] {FFFFFF} РќРµ РІРІРµР»Рё РЅРµРѕР±С…РѕРґРёРјС‹Рµ Р·РЅР°С‡РµРЅРёСЏ.{9d00bd} /cuff [id].", 0x4b58ebFF) else
 				if mainIni.settings.cuff == 1 then
-					sampSendChat("/do Наручники на поясном держателе.")
+					sampSendChat("/do РќР°СЂСѓС‡РЅРёРєРё РЅР° РїРѕСЏСЃРЅРѕРј РґРµСЂР¶Р°С‚РµР»Рµ.")
 				lua_thread.create(function() wait(1000)
-					sampSendChat("/me снял наручники с поясного держателя.")
+					sampSendChat("/me СЃРЅСЏР» РЅР°СЂСѓС‡РЅРёРєРё СЃ РїРѕСЏСЃРЅРѕРіРѕ РґРµСЂР¶Р°С‚РµР»СЏ.")
 					wait(1000)
-					sampSendChat("/me резким движением скрестил руки задержанного.")
+					sampSendChat("/me СЂРµР·РєРёРј РґРІРёР¶РµРЅРёРµРј СЃРєСЂРµСЃС‚РёР» СЂСѓРєРё Р·Р°РґРµСЂР¶Р°РЅРЅРѕРіРѕ.")
 					wait(1000)
-					sampSendChat("/me одевает наручники на правую руку задержанного.")
+					sampSendChat("/me РѕРґРµРІР°РµС‚ РЅР°СЂСѓС‡РЅРёРєРё РЅР° РїСЂР°РІСѓСЋ СЂСѓРєСѓ Р·Р°РґРµСЂР¶Р°РЅРЅРѕРіРѕ.")
 					wait(1000)
-					sampSendChat("/me одевает наручники на левую руку задержанного.")
+					sampSendChat("/me РѕРґРµРІР°РµС‚ РЅР°СЂСѓС‡РЅРёРєРё РЅР° Р»РµРІСѓСЋ СЂСѓРєСѓ Р·Р°РґРµСЂР¶Р°РЅРЅРѕРіРѕ.")
 					wait(1000)
-					sampSendChat("/do На преступнике надеты наручники.")
+					sampSendChat("/do РќР° РїСЂРµСЃС‚СѓРїРЅРёРєРµ РЅР°РґРµС‚С‹ РЅР°СЂСѓС‡РЅРёРєРё.")
 					wait(1000)
 					sampSendChat("/cuff "..id)
 				end)
@@ -1192,29 +1218,29 @@ end
 
 function arrest(param)
 local id = tonumber(param)
-	if id == nil then sampAddChatMessage("[Leader-MVD] {FFFFFF} Не ввели необходимые значения.{9d00bd} /arrest [id].", 0x4b58ebFF) else
+	if id == nil then sampAddChatMessage("[Leader-MVD] {FFFFFF} РќРµ РІРІРµР»Рё РЅРµРѕР±С…РѕРґРёРјС‹Рµ Р·РЅР°С‡РµРЅРёСЏ.{9d00bd} /arrest [id].", 0x4b58ebFF) else
 		if mainIni.settings.arrest == 1 then
-			sampSendChat("/do Ручка в бардачке.")
+			sampSendChat("/do Р СѓС‡РєР° РІ Р±Р°СЂРґР°С‡РєРµ.")
 		lua_thread.create(function() wait(1000)
-			sampSendChat("/do Бланки протоколов в бардачке.")
+			sampSendChat("/do Р‘Р»Р°РЅРєРё РїСЂРѕС‚РѕРєРѕР»РѕРІ РІ Р±Р°СЂРґР°С‡РєРµ.")
 			wait(1000)
-			sampSendChat("/me открыл бардаче, затем взял ручку и бланк протокола")
+			sampSendChat("/me РѕС‚РєСЂС‹Р» Р±Р°СЂРґР°С‡Рµ, Р·Р°С‚РµРј РІР·СЏР» СЂСѓС‡РєСѓ Рё Р±Р»Р°РЅРє РїСЂРѕС‚РѕРєРѕР»Р°")
 			wait(1000)
-			sampSendChat("/do Бланк протокола и ручка в руках.")
+			sampSendChat("/do Р‘Р»Р°РЅРє РїСЂРѕС‚РѕРєРѕР»Р° Рё СЂСѓС‡РєР° РІ СЂСѓРєР°С….")
 			wait(1000)
-			sampSendChat("/me приступил к заполнению бланка протокола")
+			sampSendChat("/me РїСЂРёСЃС‚СѓРїРёР» Рє Р·Р°РїРѕР»РЅРµРЅРёСЋ Р±Р»Р°РЅРєР° РїСЂРѕС‚РѕРєРѕР»Р°")
 			wait(3000)
-			sampSendChat("/me заполняет описание внешности нарушителя")
+			sampSendChat("/me Р·Р°РїРѕР»РЅСЏРµС‚ РѕРїРёСЃР°РЅРёРµ РІРЅРµС€РЅРѕСЃС‚Рё РЅР°СЂСѓС€РёС‚РµР»СЏ")
 			wait(3000)
-			sampSendChat("/me заполняет характеристику о нарушителе")
+			sampSendChat("/me Р·Р°РїРѕР»РЅСЏРµС‚ С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєСѓ Рѕ РЅР°СЂСѓС€РёС‚РµР»Рµ")
 			wait(3000)
-			sampSendChat("/me заполняет данные о нарушении")
+			sampSendChat("/me Р·Р°РїРѕР»РЅСЏРµС‚ РґР°РЅРЅС‹Рµ Рѕ РЅР°СЂСѓС€РµРЅРёРё")
 			wait(3000)
-			sampSendChat("/me проставил дату и подпись")
+			sampSendChat("/me РїСЂРѕСЃС‚Р°РІРёР» РґР°С‚Сѓ Рё РїРѕРґРїРёСЃСЊ")
 			wait(2000)
-			sampSendChat("/me положил ручку в бардачок")
+			sampSendChat("/me РїРѕР»РѕР¶РёР» СЂСѓС‡РєСѓ РІ Р±Р°СЂРґР°С‡РѕРє")
 			wait(2000)
-			sampSendChat("/me передал бланк составленного протокола в участок")
+			sampSendChat("/me РїРµСЂРµРґР°Р» Р±Р»Р°РЅРє СЃРѕСЃС‚Р°РІР»РµРЅРЅРѕРіРѕ РїСЂРѕС‚РѕРєРѕР»Р° РІ СѓС‡Р°СЃС‚РѕРє")
 			wait(1000)
 			sampSendChat("/arrest "..id)
 		end)
@@ -1226,9 +1252,9 @@ end
 
 function hold(param)
 local id = tonumber(param)
-	if id == nil then sampAddChatMessage("[Leader-MVD] {FFFFFF} Не ввели необходимые значения.{9d00bd} /hold [id].", 0x4b58ebFF) else
+	if id == nil then sampAddChatMessage("[Leader-MVD] {FFFFFF} РќРµ РІРІРµР»Рё РЅРµРѕР±С…РѕРґРёРјС‹Рµ Р·РЅР°С‡РµРЅРёСЏ.{9d00bd} /hold [id].", 0x4b58ebFF) else
 		if mainIni.settings.hold == 1 then
-			sampSendChat("/me взял за руку преступника, затем повёл его за собой")
+			sampSendChat("/me РІР·СЏР» Р·Р° СЂСѓРєСѓ РїСЂРµСЃС‚СѓРїРЅРёРєР°, Р·Р°С‚РµРј РїРѕРІС‘Р» РµРіРѕ Р·Р° СЃРѕР±РѕР№")
 		lua_thread.create(function() wait(1000)
 			sampSendChat("/hold "..id)
 		end)
@@ -1240,9 +1266,9 @@ end
 
 function eject(param)
 local id = tonumber(param)
-	if id == nil then sampAddChatMessage("[Leader-MVD] {FFFFFF} Не ввели необходимые значения.{9d00bd} /eject [id].", 0x4b58ebFF) else
+	if id == nil then sampAddChatMessage("[Leader-MVD] {FFFFFF} РќРµ РІРІРµР»Рё РЅРµРѕР±С…РѕРґРёРјС‹Рµ Р·РЅР°С‡РµРЅРёСЏ.{9d00bd} /eject [id].", 0x4b58ebFF) else
 		if mainIni.settings.eject == 1 then
-			sampSendChat("/me вышел из автомобиля, затем вытащил человека наружу")
+			sampSendChat("/me РІС‹С€РµР» РёР· Р°РІС‚РѕРјРѕР±РёР»СЏ, Р·Р°С‚РµРј РІС‹С‚Р°С‰РёР» С‡РµР»РѕРІРµРєР° РЅР°СЂСѓР¶Сѓ")
 		lua_thread.create(function() wait(1000)
 			sampSendChat("/eject "..id)
 		end)
@@ -1254,13 +1280,13 @@ end
 
 function su(params)
 if not string.match(params,"(%d+)%s+(%d+)%s+(.*)") then
-	sampAddChatMessage("[Leader-MVD] {FFFFFF} Не ввели необходимые значения.{9d00bd} /su [id] [Кол-во звёзд] [Причина].", 0x4b58ebFF) else
+	sampAddChatMessage("[Leader-MVD] {FFFFFF} РќРµ РІРІРµР»Рё РЅРµРѕР±С…РѕРґРёРјС‹Рµ Р·РЅР°С‡РµРЅРёСЏ.{9d00bd} /su [id] [РљРѕР»-РІРѕ Р·РІС‘Р·Рґ] [РџСЂРёС‡РёРЅР°].", 0x4b58ebFF) else
 	local id, zv, re = string.match(params,"(%d+)%s+(%d+)%s+(.*).")
 		if mainIni.settings.su == 1 then
-			sampSendChat("/me достал рацию, затем сообщил данные о преступнике диспетчеру")
+			sampSendChat("/me РґРѕСЃС‚Р°Р» СЂР°С†РёСЋ, Р·Р°С‚РµРј СЃРѕРѕР±С‰РёР» РґР°РЅРЅС‹Рµ Рѕ РїСЂРµСЃС‚СѓРїРЅРёРєРµ РґРёСЃРїРµС‚С‡РµСЂСѓ")
 			sampSendChat("/su "..id.." "..zv.." "..re)
 		lua_thread.create(function() wait(1000)
-			sampSendChat("/me повесил рацию на пояс")
+			sampSendChat("/me РїРѕРІРµСЃРёР» СЂР°С†РёСЋ РЅР° РїРѕСЏСЃ")
 		end)
 			else
 			sampSendChat("/su "..id.." "..zv.." "..re)
@@ -1270,18 +1296,18 @@ end
 
 function takelic(params)
 if not string.match(params,"(%d+)%s+(.*)") then
-	sampAddChatMessage("[Leader-MVD] {FFFFFF} Не ввели необходимые значения.{9d00bd} /takelic [id] [Причина].", 0x4b58ebFF) else
+	sampAddChatMessage("[Leader-MVD] {FFFFFF} РќРµ РІРІРµР»Рё РЅРµРѕР±С…РѕРґРёРјС‹Рµ Р·РЅР°С‡РµРЅРёСЏ.{9d00bd} /takelic [id] [РџСЂРёС‡РёРЅР°].", 0x4b58ebFF) else
 	local id, re = string.match(params,"(%d+)%s+(.*).")
 		if mainIni.settings.takelic == 1 then
 		lua_thread.create(function() wait(1000)
-			sampSendChat("/me достал КПК")
+			sampSendChat("/me РґРѕСЃС‚Р°Р» РљРџРљ")
 			wait(1000)
-			sampSendChat("/me ввёл номерной знак транспортного средства")
+			sampSendChat("/me РІРІС‘Р» РЅРѕРјРµСЂРЅРѕР№ Р·РЅР°Рє С‚СЂР°РЅСЃРїРѕСЂС‚РЅРѕРіРѕ СЃСЂРµРґСЃС‚РІР°")
 			wait(1000)
-			sampSendChat('/me изменил значение водительского удостоверения на "недействительно"')
+			sampSendChat('/me РёР·РјРµРЅРёР» Р·РЅР°С‡РµРЅРёРµ РІРѕРґРёС‚РµР»СЊСЃРєРѕРіРѕ СѓРґРѕСЃС‚РѕРІРµСЂРµРЅРёСЏ РЅР° "РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ"')
 			sampSendChat("/takelic "..id.." "..re)
 			wait(1000)
-			sampSendChat("/me выключил КПК, затем убрал его")
+			sampSendChat("/me РІС‹РєР»СЋС‡РёР» РљРџРљ, Р·Р°С‚РµРј СѓР±СЂР°Р» РµРіРѕ")
 		end)
 			else
 			sampSendChat("/takelic "..id.." "..re)
@@ -1291,9 +1317,9 @@ end
 
 function putpl(param)
 local id = tonumber(param)
-	if id == nil then sampAddChatMessage("[Leader-MVD] {FFFFFF} Не ввели необходимые значения.{9d00bd} /putpl [id].", 0x4b58ebFF) else
+	if id == nil then sampAddChatMessage("[Leader-MVD] {FFFFFF} РќРµ РІРІРµР»Рё РЅРµРѕР±С…РѕРґРёРјС‹Рµ Р·РЅР°С‡РµРЅРёСЏ.{9d00bd} /putpl [id].", 0x4b58ebFF) else
 		if mainIni.settings.putpl == 1 then
-			sampSendChat("/me открыл дверь автомобиля, затем затащил в него преступника")
+			sampSendChat("/me РѕС‚РєСЂС‹Р» РґРІРµСЂСЊ Р°РІС‚РѕРјРѕР±РёР»СЏ, Р·Р°С‚РµРј Р·Р°С‚Р°С‰РёР» РІ РЅРµРіРѕ РїСЂРµСЃС‚СѓРїРЅРёРєР°")
 		lua_thread.create(function() wait(1000)
 			sampSendChat("/putpl "..id)
 		end)
@@ -1305,15 +1331,15 @@ end
 
 function uninvite(params)
 if not string.match(params,"(%d+)%s+(.*)") then
-	sampAddChatMessage("[Leader-MVD] {FFFFFF} Не ввели необходимые значения.{9d00bd} /uninvite [id] [Причина].", 0x4b58ebFF) else
+	sampAddChatMessage("[Leader-MVD] {FFFFFF} РќРµ РІРІРµР»Рё РЅРµРѕР±С…РѕРґРёРјС‹Рµ Р·РЅР°С‡РµРЅРёСЏ.{9d00bd} /uninvite [id] [РџСЂРёС‡РёРЅР°].", 0x4b58ebFF) else
 	local id, re = string.match(params,"(%d+)%s+(.*).")
 		if mainIni.settings.uninvite == 1 then
 		lua_thread.create(function() wait(1000)
-			sampSendChat("/me достал КПК")
+			sampSendChat("/me РґРѕСЃС‚Р°Р» РљРџРљ")
 			wait(1000)
-			sampSendChat("/me ввёл номер жетона сотрудника")
+			sampSendChat("/me РІРІС‘Р» РЅРѕРјРµСЂ Р¶РµС‚РѕРЅР° СЃРѕС‚СЂСѓРґРЅРёРєР°")
 			wait(1000)
-			sampSendChat('/me нажал на кнопку "Уволить"')
+			sampSendChat('/me РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ "РЈРІРѕР»РёС‚СЊ"')
 			sampSendChat("/uninvite "..id.." "..re)
 		end)
 			else
@@ -1324,12 +1350,12 @@ end
 
 function rang(params)
 if not string.match(params,"(%d+)%s+(.*)") then
-	sampAddChatMessage("[Leader-MVD] {FFFFFF} Не ввели необходимые значения.{9d00bd} /rang [id] [+/-].", 0x4b58ebFF) else
+	sampAddChatMessage("[Leader-MVD] {FFFFFF} РќРµ РІРІРµР»Рё РЅРµРѕР±С…РѕРґРёРјС‹Рµ Р·РЅР°С‡РµРЅРёСЏ.{9d00bd} /rang [id] [+/-].", 0x4b58ebFF) else
 	local id, re = string.match(params,"(%d+)%s+(.*).")
 		if mainIni.settings.rang == 1 then
-			sampSendChat("/do На плечах висит рюкзак")
+			sampSendChat("/do РќР° РїР»РµС‡Р°С… РІРёСЃРёС‚ СЂСЋРєР·Р°Рє")
 		lua_thread.create(function() wait(1000)
-			sampSendChat("/me снял рюкзак, открыв его, взял новые погоны, затем передал их человеку на против")
+			sampSendChat("/me СЃРЅСЏР» СЂСЋРєР·Р°Рє, РѕС‚РєСЂС‹РІ РµРіРѕ, РІР·СЏР» РЅРѕРІС‹Рµ РїРѕРіРѕРЅС‹, Р·Р°С‚РµРј РїРµСЂРµРґР°Р» РёС… С‡РµР»РѕРІРµРєСѓ РЅР° РїСЂРѕС‚РёРІ")
 			sampSendChat("/rang "..id.." "..re)
 		end)
 			else
@@ -1340,13 +1366,13 @@ end
 
 function invite(param)
 local id = tonumber(param)
-	if id == nil then sampAddChatMessage("[Leader-MVD] {FFFFFF} Не ввели необходимые значения.{9d00bd} /invite [id].", 0x4b58ebFF) else
+	if id == nil then sampAddChatMessage("[Leader-MVD] {FFFFFF} РќРµ РІРІРµР»Рё РЅРµРѕР±С…РѕРґРёРјС‹Рµ Р·РЅР°С‡РµРЅРёСЏ.{9d00bd} /invite [id].", 0x4b58ebFF) else
 		if mainIni.settings.invite == 1 then
-			sampSendChat("/do На плечах висит рюкзак")
+			sampSendChat("/do РќР° РїР»РµС‡Р°С… РІРёСЃРёС‚ СЂСЋРєР·Р°Рє")
 		lua_thread.create(function() wait(1000)
-			sampSendChat("/me снял рюкзак, открыв его, взял форму, рацию и жетон")
+			sampSendChat("/me СЃРЅСЏР» СЂСЋРєР·Р°Рє, РѕС‚РєСЂС‹РІ РµРіРѕ, РІР·СЏР» С„РѕСЂРјСѓ, СЂР°С†РёСЋ Рё Р¶РµС‚РѕРЅ")
 			wait(1000)
-			sampSendChat("/me передал форму, рацию и жетон человеку на против")
+			sampSendChat("/me РїРµСЂРµРґР°Р» С„РѕСЂРјСѓ, СЂР°С†РёСЋ Рё Р¶РµС‚РѕРЅ С‡РµР»РѕРІРµРєСѓ РЅР° РїСЂРѕС‚РёРІ")
 			sampSendChat("/invite "..id)
 		end)
 			else
@@ -1357,38 +1383,38 @@ end
 
 function changeskin(param)
 local id = tonumber(param)
-	if id == nil then sampAddChatMessage("[Leader-MVD] {FFFFFF} Не ввели необходимые значения.{9d00bd} /changeskin [id].", 0x4b58ebFF) else
+	if id == nil then sampAddChatMessage("[Leader-MVD] {FFFFFF} РќРµ РІРІРµР»Рё РЅРµРѕР±С…РѕРґРёРјС‹Рµ Р·РЅР°С‡РµРЅРёСЏ.{9d00bd} /changeskin [id].", 0x4b58ebFF) else
 		if mainIni.settings.changeskin == 1 then
-			sampSendChat("/do На плечах висит рюкзак")
+			sampSendChat("/do РќР° РїР»РµС‡Р°С… РІРёСЃРёС‚ СЂСЋРєР·Р°Рє")
 		lua_thread.create(function() wait(1000)
-			sampSendChat("/me снял рюкзак, открыв его, взял новую форму")
+			sampSendChat("/me СЃРЅСЏР» СЂСЋРєР·Р°Рє, РѕС‚РєСЂС‹РІ РµРіРѕ, РІР·СЏР» РЅРѕРІСѓСЋ С„РѕСЂРјСѓ")
 			wait(1000)
-			sampSendChat("/сhangeskin "..id)
+			sampSendChat("/СЃhangeskin "..id)
 			wait(1000)
-			sampSendChat("/me передал новую форму человеку на против")
+			sampSendChat("/me РїРµСЂРµРґР°Р» РЅРѕРІСѓСЋ С„РѕСЂРјСѓ С‡РµР»РѕРІРµРєСѓ РЅР° РїСЂРѕС‚РёРІ")
 		end)
 			else
-			sampSendChat("/сhangeskin "..id)
+			sampSendChat("/СЃhangeskin "..id)
 		end
 	end
 end
 
 function search(param)
 local id = tonumber(param)
-	if id == nil then sampAddChatMessage("[Leader-MVD] {FFFFFF} Не ввели необходимые значения.{9d00bd} /search [id].", 0x4b58ebFF) else
+	if id == nil then sampAddChatMessage("[Leader-MVD] {FFFFFF} РќРµ РІРІРµР»Рё РЅРµРѕР±С…РѕРґРёРјС‹Рµ Р·РЅР°С‡РµРЅРёСЏ.{9d00bd} /search [id].", 0x4b58ebFF) else
 		if mainIni.settings.search == 1 then
-			sampSendChat("Встаньте лицом к стене, руки за голову.")
+			sampSendChat("Р’СЃС‚Р°РЅСЊС‚Рµ Р»РёС†РѕРј Рє СЃС‚РµРЅРµ, СЂСѓРєРё Р·Р° РіРѕР»РѕРІСѓ.")
 		lua_thread.create(function() wait(1000)
 			sampSendChat("/n /anim 33")
-			sampSendChat("/me достал резиновые перчатки.")
+			sampSendChat("/me РґРѕСЃС‚Р°Р» СЂРµР·РёРЅРѕРІС‹Рµ РїРµСЂС‡Р°С‚РєРё.")
 			wait(1000)
-			sampSendChat("/me одел резиновые перчатки.")
+			sampSendChat("/me РѕРґРµР» СЂРµР·РёРЅРѕРІС‹Рµ РїРµСЂС‡Р°С‚РєРё.")
 			wait(1000)
-			sampSendChat("/me обыскал ноги.")
+			sampSendChat("/me РѕР±С‹СЃРєР°Р» РЅРѕРіРё.")
 			wait(1000)
 			sampSendChat("/anim 14")
 			wait(1000)
-			sampSendChat("/me обыскал тело.")
+			sampSendChat("/me РѕР±С‹СЃРєР°Р» С‚РµР»Рѕ.")
 			wait(1000)
 			sampSendChat("/anim 16")
 			wait(1000)
@@ -1407,31 +1433,31 @@ end
 
 function fn(param)
 local text = param
-	if text == "" then sampAddChatMessage("[Leader-MVD] {FFFFFF} Не ввели необходимые значения.{9d00bd} /fn [текст].", 0x4b58ebFF) else
+	if text == "" then sampAddChatMessage("[Leader-MVD] {FFFFFF} РќРµ РІРІРµР»Рё РЅРµРѕР±С…РѕРґРёРјС‹Рµ Р·РЅР°С‡РµРЅРёСЏ.{9d00bd} /fn [С‚РµРєСЃС‚].", 0x4b58ebFF) else
 		sampSendChat("/f (( "..text.." ))")
 	end
 end
 
 function rn(param)
 local text = param
-	if text == "" then sampAddChatMessage("[Leader-MVD] {FFFFFF} Не ввели необходимые значения.{9d00bd} /rn [текст].", 0x4b58ebFF) else
+	if text == "" then sampAddChatMessage("[Leader-MVD] {FFFFFF} РќРµ РІРІРµР»Рё РЅРµРѕР±С…РѕРґРёРјС‹Рµ Р·РЅР°С‡РµРЅРёСЏ.{9d00bd} /rn [С‚РµРєСЃС‚].", 0x4b58ebFF) else
 		sampSendChat("/r (( "..text.." ))")
 	end
 end
 
 function ticket(params)
 if not string.match(params,"(%d+)%s+(%d+)%s+(.*)") then
-	sampAddChatMessage("[Leader-MVD] {FFFFFF} Не ввели необходимые значения.{9d00bd} /ticket [id] [Сумма] [Причина].", 0x4b58ebFF) else
+	sampAddChatMessage("[Leader-MVD] {FFFFFF} РќРµ РІРІРµР»Рё РЅРµРѕР±С…РѕРґРёРјС‹Рµ Р·РЅР°С‡РµРЅРёСЏ.{9d00bd} /ticket [id] [РЎСѓРјРјР°] [РџСЂРёС‡РёРЅР°].", 0x4b58ebFF) else
 	local id, re = string.match(params,"(%d+)%s+(.*).")
 		if mainIni.settings.ticket == 1 then
 		lua_thread.create(function() wait(1000)
-			sampSendChat("/me достал квитанцию")
+			sampSendChat("/me РґРѕСЃС‚Р°Р» РєРІРёС‚Р°РЅС†РёСЋ")
 			wait(1000)
-			sampSendChat("/me достал ручку")
+			sampSendChat("/me РґРѕСЃС‚Р°Р» СЂСѓС‡РєСѓ")
 			wait(1000)
-			sampSendChat('/me заполнил квитанцию')
+			sampSendChat('/me Р·Р°РїРѕР»РЅРёР» РєРІРёС‚Р°РЅС†РёСЋ')
 			wait(1000)
-			sampSendChat("/me передал квитанцию нарушителю")
+			sampSendChat("/me РїРµСЂРµРґР°Р» РєРІРёС‚Р°РЅС†РёСЋ РЅР°СЂСѓС€РёС‚РµР»СЋ")
 			sampSendChat("/takelic "..id.." "..re)
 		end)
 			else
@@ -1446,14 +1472,14 @@ end
 
 function udos()
 	lua_thread.create(function() wait(0)
-		sampSendChat("/do В заднем кармане брюк лежит удостоверение сотрудника МВД.")
+		sampSendChat("/do Р’ Р·Р°РґРЅРµРј РєР°СЂРјР°РЅРµ Р±СЂСЋРє Р»РµР¶РёС‚ СѓРґРѕСЃС‚РѕРІРµСЂРµРЅРёРµ СЃРѕС‚СЂСѓРґРЅРёРєР° РњР’Р”.")
 		wait(1000)
-		sampSendChat("/me протянув руку к карману, резким движением взял удостоверение в руки")
+		sampSendChat("/me РїСЂРѕС‚СЏРЅСѓРІ СЂСѓРєСѓ Рє РєР°СЂРјР°РЅСѓ, СЂРµР·РєРёРј РґРІРёР¶РµРЅРёРµРј РІР·СЏР» СѓРґРѕСЃС‚РѕРІРµСЂРµРЅРёРµ РІ СЂСѓРєРё")
 		wait(2000)
-		sampSendChat('/me открыл удостоверение, затем протянул руку и показал его')
+		sampSendChat('/me РѕС‚РєСЂС‹Р» СѓРґРѕСЃС‚РѕРІРµСЂРµРЅРёРµ, Р·Р°С‚РµРј РїСЂРѕС‚СЏРЅСѓР» СЂСѓРєСѓ Рё РїРѕРєР°Р·Р°Р» РµРіРѕ')
 		wait(1000)
-		sampSendChat("/do В удостоверении: Звание: "..u8:decode(mainIni.settings.dol).." | Имя Фамилия: "..u8:decode(mainIni.settings.name).." ... ")
-		sampSendChat("/do ... | Номер удостоверения: "..u8:decode(mainIni.settings.phone).." | MofIA WS")
+		sampSendChat("/do Р’ СѓРґРѕСЃС‚РѕРІРµСЂРµРЅРёРё: Р—РІР°РЅРёРµ: "..u8:decode(mainIni.settings.dol).." | РРјСЏ Р¤Р°РјРёР»РёСЏ: "..u8:decode(mainIni.settings.name).." ... ")
+		sampSendChat("/do ... | РќРѕРјРµСЂ СѓРґРѕСЃС‚РѕРІРµСЂРµРЅРёСЏ: "..u8:decode(mainIni.settings.phone).." | MofIA WS")
 	end)
 end
 
@@ -1478,7 +1504,7 @@ end
 --------------------------------------------------------------------------------
 ------------------------------------UPDATE--------------------------------------
 --------------------------------------------------------------------------------
-function update()
+--[[function update()
     local fpath = os.getenv('TEMP') .. '\\version.json'
     downloadUrlToFile('https://github.com/MateoPenaloza/leader_mvd/blob/master/version.json', fpath, function(id, status, p1, p2)
         if status == dlstatus.STATUS_ENDDOWNLOADDATA then
@@ -1498,14 +1524,14 @@ function update()
     end
 end)
 end
---скачивание актуальной версии
+--СЃРєР°С‡РёРІР°РЅРёРµ Р°РєС‚СѓР°Р»СЊРЅРѕР№ РІРµСЂСЃРёРё
 function goupdate()
-sampAddChatMessage(("[Leader-MVD] {f3f3f3}Обнаружено обновление. Попробую обновиться.."), 0xffffff)
-sampAddChatMessage(("[Leader-MVD] {f3f3f3}Текущая версия: {669acc}"..thisScript().version.." {f3f3f3}> Новая версия: {669acc}"..version), 0x4b58ebFF)
+sampAddChatMessage(("[Leader-MVD] {f3f3f3}РћР±РЅР°СЂСѓР¶РµРЅРѕ РѕР±РЅРѕРІР»РµРЅРёРµ. РџРѕРїСЂРѕР±СѓСЋ РѕР±РЅРѕРІРёС‚СЊСЃСЏ.."), 0xffffff)
+sampAddChatMessage(("[Leader-MVD] {f3f3f3}РўРµРєСѓС‰Р°СЏ РІРµСЂСЃРёСЏ: {669acc}"..thisScript().version.." {f3f3f3}> РќРѕРІР°СЏ РІРµСЂСЃРёСЏ: {669acc}"..version), 0x4b58ebFF)
 downloadUrlToFile(updatelink, thisScript().path, function(id3, status1, p13, p23)
     if status1 == dlstatus.STATUS_ENDDOWNLOADDATA then
-    sampAddChatMessage("[Leader-MVD] {FFFFFF} Скрипт обнавлён. Сейчас перезайдёт перезагрузка скрипта.", 0x4b58ebFF)
+    sampAddChatMessage("[Leader-MVD] {FFFFFF} РЎРєСЂРёРїС‚ РѕР±РЅР°РІР»С‘РЅ. РЎРµР№С‡Р°СЃ РїРµСЂРµР·Р°Р№РґС‘С‚ РїРµСЂРµР·Р°РіСЂСѓР·РєР° СЃРєСЂРёРїС‚Р°.", 0x4b58ebFF)
     thisScript():reload()
 end
 end)
-end
+end]]
